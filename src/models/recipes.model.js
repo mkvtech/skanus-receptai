@@ -5,19 +5,15 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const users = sequelizeClient.define('users', {
-
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    password: {
+  const recipes = sequelizeClient.define('recipes', {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-
-
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     hooks: {
       beforeCount(options) {
@@ -27,11 +23,11 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  users.associate = function (models) {
-    users.hasMany(models.recipes);
+  recipes.associate = function (models) {
+    recipes.belongsTo(models.users);
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };
 
-  return users;
+  return recipes;
 };
