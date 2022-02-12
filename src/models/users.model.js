@@ -10,13 +10,23 @@ module.exports = function (app) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
+      unique: true,
     },
 
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 
   }, {
     hooks: {
@@ -27,10 +37,10 @@ module.exports = function (app) {
   });
 
   users.associate = function (models) {
+
     users.hasMany(models.recipes);
     users.hasMany(models.comments);
-    // Define associations here
-    // See https://sequelize.org/master/manual/assocs.html
+
   };
 
   return users;

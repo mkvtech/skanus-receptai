@@ -8,33 +8,20 @@ const makePassword = (password) => bcrypt.hash(password, bcrypt.genSaltSync(8));
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-
     await users.bulkCreate([{
       email: 'admin@skanus_receptai.lt',
       password: await makePassword('admin-password'),
+      firstName: 'John',
+      lastName: 'Doe (1)',
     }, {
       email: 'user@skanus_receptai.lt',
       password: await makePassword('password'),
+      firstName: 'John',
+      lastName: 'Doe (2)',
     }]);
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-
     await queryInterface.bulkDelete('Users', null, {});
   }
 };
