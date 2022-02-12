@@ -1,6 +1,6 @@
 # skanus-receptai
 
-> 
+>
 
 ## About
 
@@ -27,6 +27,14 @@ Getting up and running is as easy as 1, 2, 3.
 ## Testing
 
 Simply run `npm test` and all your tests in the `test/` directory will be run.
+
+## Scripts
+
+`npm run db:sync` - drops all tables, then recreates updated tables from model definitions.
+
+`npx sequelize db:seed:all` - fills tables with sample data.
+
+`npx sequelize-cli seed:generate --name users` - generates sample seed file. See https://sequelize.org/master/manual/migrations.html for details.
 
 ## Scaffolding
 

@@ -28,7 +28,9 @@
     "lint": "eslint src/. test/. --config .eslintrc.json --fix",
     "dev": "nodemon src/",
     "start": "node src/",
-    "jest": "jest --forceExit"
+    "jest": "jest --forceExit",
+
+    "db:sync": "node ./migrations/sync.js"
   },
   "standard": {
     "env": [
