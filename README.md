@@ -12,25 +12,25 @@ Getting up and running is as easy as 1, 2, 3.
 
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
-    ```bash
-    node --version
-    npm --version
-    ```
+   ```bash
+   node --version
+   npm --version
+   ```
 
 Note: using Node version `v14.0.0` until this issue is resolved: https://github.com/npm/cli/issues/4234
 
 2. Install your dependencies
 
-    ```
-    cd path/to/skanus-receptai
-    npm install
-    ```
+   ```
+   cd path/to/skanus-receptai
+   npm install
+   ```
 
 3. Start your app
 
-    ```
-    npm start
-    ```
+   ```
+   npm start
+   ```
 
 ## Testing
 

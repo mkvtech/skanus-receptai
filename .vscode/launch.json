@@ -10,16 +10,14 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "start"
-      ],
+      "runtimeArgs": ["start"]
     },
 
     {
       "name": "Current file (script)",
       "type": "node",
       "request": "launch",
-      "program": "${file}",
+      "program": "${file}"
     }
   ]
 }

@@ -1,32 +1,32 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
 module.exports = function (app) {
-  const connectionString = app.get('sqlite');
+  const connectionString = app.get('sqlite')
   const sequelize = new Sequelize(connectionString, {
     dialect: 'sqlite',
     logging: false,
     define: {
-      freezeTableName: true
-    }
-  });
-  const oldSetup = app.setup;
+      freezeTableName: true,
+    },
+  })
+  const oldSetup = app.setup
 
-  app.set('sequelizeClient', sequelize);
+  app.set('sequelizeClient', sequelize)
 
   app.setup = function (...args) {
-    const result = oldSetup.apply(this, args);
+    const result = oldSetup.apply(this, args)
 
     // Set up data relationships
-    const models = sequelize.models;
-    Object.keys(models).forEach(name => {
+    const models = sequelize.models
+    Object.keys(models).forEach((name) => {
       if ('associate' in models[name]) {
-        models[name].associate(models);
+        models[name].associate(models)
       }
-    });
+    })
 
     // Sync to the database
-    app.set('sequelizeSync', sequelize.sync());
+    app.set('sequelizeSync', sequelize.sync())
 
-    return result;
-  };
-};
+    return result
+  }
+}
