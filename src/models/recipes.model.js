@@ -6,14 +6,18 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const recipes = sequelizeClient.define('recipes', {
-    name: {
+    title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
+    ingredients: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {

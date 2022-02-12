@@ -6,23 +6,27 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await recipes.bulkCreate([{
       id: 1,
-      name: 'First Recipe',
+      title: 'First Recipe',
       description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
+      ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
       userId: 1,
     }, {
       id: 2,
-      name: 'Second Recipe',
+      title: 'Second Recipe',
       description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
+      ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
       userId: 2,
     }, {
       id: 3,
-      name: 'Third Recipe',
+      title: 'Third Recipe',
       description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
+      ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
       userId: 2,
     }, {
       id: 4,
-      name: 'Fourth Recipe',
+      title: 'Fourth Recipe',
       description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
+      ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
       userId: 2,
     }]);
   },
