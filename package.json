@@ -29,7 +29,6 @@
     "dev": "nodemon src/",
     "start": "node src/",
     "jest": "jest --forceExit",
-
     "db:sync": "node ./migrations/sync.js"
   },
   "standard": {
@@ -63,6 +62,7 @@
     "eslint": "^8.8.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
     "sequelize-cli": "^6.4.1"
   }
 }
