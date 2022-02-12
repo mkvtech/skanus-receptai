@@ -109,3 +109,6 @@ $RECYCLE.BIN/
 # Others
 lib/
 data/
+
+# SQLite database file
+/skanus_receptai.sqlite
