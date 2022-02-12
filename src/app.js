@@ -20,6 +20,8 @@ const authentication = require('./authentication');
 
 const sequelize = require('./sequelize');
 
+const frontendRoutes = require('./frontend_routes')
+
 const app = express(feathers());
 
 // Load app configuration
@@ -49,6 +51,8 @@ app.configure(authentication);
 app.configure(services);
 // Set up event channels (see channels.js)
 app.configure(channels);
+
+app.configure(frontendRoutes);
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound());
