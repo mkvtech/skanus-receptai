@@ -10,10 +10,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/comments', new Comments(options, app));
+  app.use('/api/comments', new Comments(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('comments');
+  const service = app.service('api/comments');
 
   service.hooks(hooks);
 };
