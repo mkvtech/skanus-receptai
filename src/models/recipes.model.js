@@ -22,9 +22,9 @@ module.exports = function (app) {
     }
   });
 
-  // eslint-disable-next-line no-unused-vars
   recipes.associate = function (models) {
     recipes.belongsTo(models.users);
+    recipes.hasMany(models.comments);
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };

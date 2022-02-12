@@ -5,19 +5,15 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const users = sequelizeClient.define('users', {
-
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    password: {
+  const comments = sequelizeClient.define('comments', {
+    text: {
       type: DataTypes.STRING,
       allowNull: false
     },
-
-
+    rating: {
+      type: DataTypes.NUMBER,
+      allowNull: false
+    }
   }, {
     hooks: {
       beforeCount(options) {
@@ -26,12 +22,12 @@ module.exports = function (app) {
     }
   });
 
-  users.associate = function (models) {
-    users.hasMany(models.recipes);
-    users.hasMany(models.comments);
+  comments.associate = function (models) {
+    comments.belongsTo(models.users);
+    comments.belongsTo(models.recipes);
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   };
 
-  return users;
+  return comments;
 };
