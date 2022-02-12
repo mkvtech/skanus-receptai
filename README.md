@@ -89,3 +89,5 @@ For more information on all the things you can do with Feathers visit [docs.feat
 Feathers Sequelize adapter: https://www.npmjs.com/package/feathers-sequelize
 
 About Sequelize seeds and migrations: https://github.com/sequelize/cli#usage, https://sequelize.org/master/manual/migrations.html
+
+About feathers' session authentication: https://docs.feathersjs.com/cookbook/express/view-engine.html#using-authentication

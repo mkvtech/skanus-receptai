@@ -20,6 +20,7 @@ const authentication = require('./authentication')
 const sequelize = require('./sequelize')
 
 const frontendRoutes = require('./frontend_routes')
+const sessionAuthentication = require('./session_authentication')
 
 const app = express(feathers())
 
@@ -53,6 +54,9 @@ app.configure(services)
 // Set up event channels (see channels.js)
 app.configure(channels)
 
+// Register front-end authentication routes
+app.configure(sessionAuthentication)
+// Register view routes
 app.configure(frontendRoutes)
 
 // Configure a middleware for 404s and the error handler
