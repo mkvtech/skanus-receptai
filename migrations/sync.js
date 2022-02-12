@@ -1,12 +1,7 @@
-const app = require('../src/app');
-const sequelize = app.get('sequelizeClient');
+const { sequelize } = require('./models');
 
 (async () => {
   console.log('Syncrhonizing database...');
-
-  // see also src/sequelize.js
-  const models = sequelize.models;
-  Object.values(models).forEach(model => model.associate(models));
 
   await sequelize.sync({ force: true });
 

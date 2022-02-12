@@ -42,7 +42,7 @@ Simply run `npm test` and all your tests in the `test/` directory will be run.
 
 `npx sequelize db:seed:all` - fills tables with sample data.
 
-`npx sequelize-cli seed:generate --name users` - generates sample seed file. See https://sequelize.org/master/manual/migrations.html for details.
+`npx sequelize seed:generate --name users` - generates sample seed file. See https://sequelize.org/master/manual/migrations.html for details.
 
 ## Scaffolding
 
@@ -58,6 +58,8 @@ feathers help                           # Show all commands
 
 ## Notes
 
+### Creating users from console
+
 Before adding a new user in console or back-end you must generate password hash:
 
 ```js
@@ -70,6 +72,15 @@ users.create([{
 ```
 
 The API does this automagically.
+
+### Creating models from scripts
+
+Models in `src/models/*.js` have only data columns defined and are left with association columns undefined, so even creating object with `relatedObjectId: 1` will result in `NULL`. To get properly initialized models see `migrations/models.js` or use:
+
+```js
+const models = require('./migrations/models.js')
+console.log(models.users.associations) // This should now return non-empty container of associations
+```
 
 ## Help
 
