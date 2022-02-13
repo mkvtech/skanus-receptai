@@ -3,6 +3,9 @@ const { authenticate } = require('@feathersjs/express')
 const bcrypt = require('bcrypt')
 
 module.exports = (app) => {
+  const afterLoginRedirect = app.get('other').afterLoginRedirect
+  const afterSignupRedirect = app.get('other').afterSignupRedirect
+
   app.get('/login', (req, res) => res.sendFile(path.join(app.get('public'), 'login.html')))
   app.get('/signup', (req, res) => res.sendFile(path.join(app.get('public'), 'signup.html')))
 
@@ -24,7 +27,7 @@ module.exports = (app) => {
         accessToken,
       }
 
-      res.redirect('/home')
+      res.redirect(afterLoginRedirect)
     } catch (error) {
       next(error)
     }
@@ -44,7 +47,7 @@ module.exports = (app) => {
         accessToken,
       }
 
-      res.redirect('/home')
+      res.redirect(afterSignupRedirect)
     } catch (error) {
       next(error)
     }

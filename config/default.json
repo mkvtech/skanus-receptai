@@ -25,5 +25,9 @@
       "passwordField": "password"
     }
   },
-  "sqlite": "sqlite://skanus_receptai.sqlite"
+  "sqlite": "sqlite://skanus_receptai.sqlite",
+  "other": {
+    "afterLoginRedirect": "/recipes",
+    "afterSignupRedirect": "/recipes"
+  }
 }
