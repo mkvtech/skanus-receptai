@@ -10,7 +10,8 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["start"]
+      "runtimeArgs": ["start"],
+      "outputCapture": "std",
     },
 
     {
