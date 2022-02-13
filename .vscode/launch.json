@@ -11,7 +11,7 @@
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start"],
-      "outputCapture": "std",
+      "outputCapture": "std"
     },
 
     {

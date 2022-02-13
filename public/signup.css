@@ -1,52 +1,51 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    color: #444;
-    font-family: sans-serif;
-  }
-
-  .container {
-    /* width: 200px; */
-    width: 400px;
-    margin: 300px auto;
-    background-color: #f7f7f7;
-    padding: 10px;
-  }
-
-  .signup-header {
-      /* OLD */
-      /* padding: 20px 40px; */
-      padding: 20px 30%;
-  }
-/* Email, passwor label */
-  label {
-    /* font-size: 22px; */
-    line-height: 2;
-    padding: 20px;
-  }
-
-  button {
-      margin-top: 10px;
-      padding: 8px;
-      margin-left: 249px;
-  }
-
-/* Email, password, input, button fields */
-  form {
-      padding: 10px;
-      padding-left: 20px;
-  }
-
-
-/* Input email, password */
-  input#email {
-    margin-left: 40px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-input[type="password"] {
-    margin-left: 10px;
+body {
+  color: #444;
+  font-family: sans-serif;
+}
+
+.container {
+  /* width: 200px; */
+  width: 400px;
+  margin: 300px auto;
+  background-color: #f7f7f7;
+  padding: 10px;
+}
+
+.signup-header {
+  /* OLD */
+  /* padding: 20px 40px; */
+  padding: 20px 30%;
+}
+/* Email, passwor label */
+label {
+  /* font-size: 22px; */
+  line-height: 2;
+  padding: 20px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px;
+  margin-left: 249px;
+}
+
+/* Email, password, input, button fields */
+form {
+  padding: 10px;
+  padding-left: 20px;
+}
+
+/* Input email, password */
+input#email {
+  margin-left: 40px;
+}
+
+input[type='password'] {
+  margin-left: 10px;
 }
