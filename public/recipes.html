@@ -1,48 +1,67 @@
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recipes</title>
-<script src="https://kit.fontawesome.com/dbca112c9a.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="recipes.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
-<body>
-recipes
-<section class="header-container">
-  <div class="header">
-    <header>Visi receptai</header>
-  </div>
-</section>
-<section class="nav-container">
-  <div class="nav-links">
-      <a>Visi receptai</a>
-      <a>Mano receptai</a>
-  </div>
-</section>
-<section class="search-form-container">
-  <div class ="search-box">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search-text" name="search-recipe" placeholder="Type to search">
-  </div>
-</section>
-<main class="main-container">
-<div class="left-side-container">
-<li>Kazkoks receptas</li>
-<li>Kazkoks receptas</li>
-<li>Kazkoks receptas</li>
-</div>
-<div class="right-side-container">
-<header class="right-header">Recepto pavadinimas</header>
-<div class="igridients">
-<p>Igridientai</p>
-<li>Pirmas</li>
-</div>
-<div class="gaminimo-budas">
-<p>Gaminimo budas</p>
-<li></li>
-</div>
-</div>
-</main>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Recipes</title>
+
+    <script src="https://kit.fontawesome.com/dbca112c9a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="recipes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+      integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <section class="header-container">
+      <div class="header">
+        <header>Visi receptai</header>
+      </div>
+    </section>
+    <section class="nav-container">
+      <nav class="nav-links">
+        <a href="/skanus-receptai-master/public/recipes.html">Visi receptai</a>
+        <a>Mano receptai</a>
+      </nav>
+    </section>
+    <section class="search-form-container">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="searchbar" onkeyup="search_recipe()" type="text" name="search-recipe" placeholder="Type to search" />
+      </div>
+    </section>
+    <main class="main-container">
+      <div class="left-side-container">
+        <ul id="list-of-recipes">
+        </ul>
+      </div>
+      <div class="right-side-container">
+        <header class="right-header">Recepto pavadinimas</header>
+        <div class="ingridients">
+          <p>Igridientai</p>
+          <li>Pirmas</li>
+          <li>Pirmas</li>
+          <li>Pirmas</li>
+        </div>
+        <div class="gaminimo-budas">
+          <p>Gaminimo budas</p>
+          <li></li>
+        </div>
+      </div>
+    </main>
+    <script src="/recipes.js"></script>
+  </body>
 </html>
