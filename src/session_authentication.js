@@ -17,7 +17,7 @@ module.exports = (app) => {
         accessToken,
       }
 
-      res.redirect('/recipes')
+      res.redirect('/home')
     } catch (error) {
       next(error)
     }
