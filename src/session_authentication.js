@@ -1,4 +1,5 @@
 const path = require('path')
+const { authenticate } = require('@feathersjs/express')
 
 module.exports = (app) => {
   app.get('/login', (req, res) => res.sendFile(path.join(app.get('public'), 'login.html')))
@@ -23,9 +24,17 @@ module.exports = (app) => {
     }
   })
 
-  app.get('/jwt', (req, res) => {
-    res.send(req.session.authentication.accessToken)
-  })
+  app.get(
+    '/jwt',
+    (req, res, next) => {
+      req.authentication = req.session.authentication
+      next()
+    },
+    authenticate('jwt'),
+    (req, res) => {
+      res.send(req.session.authentication.accessToken)
+    }
+  )
 
   app.get('/logout', (req, res) => {
     delete req.session.authentication
