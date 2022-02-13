@@ -1,3 +1,5 @@
+/*global document, $, axios */
+
 let jwt
 let recipesLinksContainer = $('#list-of-recipes')
 let recipes = []
@@ -52,8 +54,25 @@ const renderRecipeLink = (recipe) => {
   `
 }
 
+// eslint-disable-next-line no-unused-vars
 const selectRecipe = (recipeId) => {
   console.log(`Selecting recipe with ID = ${recipeId}...`)
+  const recipe = recipes.find(recipe => recipe.id === recipeId)
+  renderRecipe(recipe)
+}
+
+const setHtmlMultiline = (element, multilineText) => {
+  element.html(multilineText.split('\n').map(line => `<p>${line}</p>`))
+}
+
+const renderRecipe = (recipe) => {
+  const titleHeading = $('#recipe-title')
+  const ingredientsParagraph = $('#recipe-ingredients')
+  const descriptionParagraph = $('#recipe-description')
+
+  titleHeading.text(recipe.title)
+  setHtmlMultiline(ingredientsParagraph, recipe.ingredients)
+  setHtmlMultiline(descriptionParagraph, recipe.description)
 }
 
 ;(async () => {
@@ -61,9 +80,3 @@ const selectRecipe = (recipeId) => {
   recipes = await fetchRecipes(jwt)
   renderRecipesMenu(recipes)
 })()
-
-// var ingridients = document.getElementsByClassName('ingridients').getElementsByTagName('li');
-
-// for(var i = 0; i < ingridients.length; i++) {
-//     ingridients[i].hidden = true;
-// }
