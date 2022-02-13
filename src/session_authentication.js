@@ -23,6 +23,10 @@ module.exports = (app) => {
     }
   })
 
+  app.get('/jwt', (req, res) => {
+    res.send(req.session.authentication.accessToken)
+  })
+
   app.get('/logout', (req, res) => {
     delete req.session.authentication
     res.end('You are now logged out')
