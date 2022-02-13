@@ -24,6 +24,7 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
+    "prettier": "npx prettier --write .",
     "test": "npm run lint && npm run jest",
     "lint": "eslint src/. test/. --config .eslintrc.json --fix",
     "dev": "nodemon src/",
