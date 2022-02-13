@@ -3,6 +3,7 @@ const { authenticate } = require('@feathersjs/express')
 
 module.exports = (app) => {
   app.get('/login', (req, res) => res.sendFile(path.join(app.get('public'), 'login.html')))
+  app.get('/signup', (req, res) => res.sendFile(path.join(app.get('public'), 'signup.html')))
 
   app.post('/login', async (req, res, next) => {
     try {
