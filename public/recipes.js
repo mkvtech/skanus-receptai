@@ -42,6 +42,11 @@ const fetchUser = async (userId) => {
   return response.data.data[0]
 }
 
+const fetchComments = async(recipeId) => {
+  const response = await axios.get(`/api/comments?recipeId=${recipeId}`, { headers: { Authorization: `Bearer ${jwt}` } })
+  return response.data.data
+}
+
 const renderRecipesMenu = (recipes) => {
   recipesLinksContainer.html('')
 
@@ -103,11 +108,23 @@ const fillRecipeView = async (recipe) => {
   setHtmlMultiline(descriptionParagraph, recipe.description)
 
   fillRecipeAuthor(await fetchUser(recipe.userId))
+  await fillComments(await fetchComments(recipe.id))
 }
 
 const fillRecipeAuthor = (user) => {
   const authorParagraph = $('#recipe-author')
   authorParagraph.text(`${user.firstName} ${user.lastName}`)
+}
+
+const fillComments = async (comments) => {
+  const commentsContainer = $('#recipe-comments')
+
+  commentsContainer.empty()
+
+  comments.forEach(async (comment) => {
+    comment.user = await fetchUser(comment.userId)
+    commentsContainer.append(renderComment(comment))
+  })
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -170,10 +187,23 @@ const createRecipeView = () => {
       <h2>Autorius</h2>
       <p id="recipe-author"></p>
 
+      <h2>Naujas komentaras</h2>
+      <div id="recipe-comment-form">(TODO)</div>
+
       <h2>Komentarai</h2>
-      <div id="recipe-comments">(TODO)</div>
+      <div id="recipe-comments"></div>
     </div>
   `)
+}
+
+const renderComment = (comment) => {
+  return `
+    <div class="comment-container">
+      <p class="comment-user">author: ${comment.user.firstName} ${comment.user.lastName}</p>
+      <p class="comment-text">text: ${comment.text}</p>
+      <p class="comment-rating">rating: ${comment.rating}</p>
+    </div>
+  `
 }
 
 const recipeForm = createRecipeForm()
