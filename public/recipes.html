@@ -35,6 +35,7 @@
       <nav class="nav-links">
         <a href="/skanus-receptai-master/public/recipes.html">Visi receptai</a>
         <a>Mano receptai</a>
+        <a onclick="onNewRecipe()">Naujas receptas</a>
       </nav>
     </section>
     <section class="search-form-container">
@@ -48,16 +49,7 @@
         <ul id="list-of-recipes">
         </ul>
       </div>
-      <div class="right-side-container">
-        <header id="recipe-title" class="right-header">Recepto pavadinimas</header>
-
-        <h2>Ingredientai</h2>
-
-        <div id="recipe-ingredients" class="ingridients"></div>
-
-        <h2>Gaminimo budas</h2>
-
-        <div id="recipe-description" class="description"></div>
+      <div id="right-side-container">
       </div>
     </main>
     <script src="/recipes.js"></script>

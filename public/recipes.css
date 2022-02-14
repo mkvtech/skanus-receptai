@@ -8,6 +8,9 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
 }
+.display-none {
+    display: none;
+}
 .header-container{
     display: flex;
     justify-content: center;
@@ -72,10 +75,10 @@ a:hover {
 .left-side-container li{
     padding: 1rem;
 }
-.right-side-container header{
+#right-side-container header{
     display: flex;
     justify-content: center;
     font-size: 20px;
     height: 1rem;
     margin-bottom: 3rem;
-} 
+}
