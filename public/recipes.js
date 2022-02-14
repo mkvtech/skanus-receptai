@@ -37,6 +37,11 @@ const fetchRecipes = async (jwt) => {
   return response.data.data
 }
 
+const fetchUser = async (userId) => {
+  const response = await axios.get(`/api/users?id=${userId}`, { headers: { Authorization: `Bearer ${jwt}` } })
+  return response.data.data[0]
+}
+
 const renderRecipesMenu = (recipes) => {
   recipesLinksContainer.html('')
 
@@ -67,6 +72,7 @@ const onRecipeSelect = (recipeId) => {
   fillRecipeView(recipe)
 }
 
+// eslint-disable-next-line no-unused-vars
 const onNewRecipe = () => {
   console.log('Opening form for new recipe...')
 
@@ -87,7 +93,7 @@ const setHtmlMultiline = (element, multilineText) => {
   element.html(multilineText.split('\n').map(line => `<p>${line}</p>`))
 }
 
-const fillRecipeView = (recipe) => {
+const fillRecipeView = async (recipe) => {
   const titleHeading = $('#recipe-title')
   const ingredientsParagraph = $('#recipe-ingredients')
   const descriptionParagraph = $('#recipe-description')
@@ -95,6 +101,13 @@ const fillRecipeView = (recipe) => {
   titleHeading.text(recipe.title)
   setHtmlMultiline(ingredientsParagraph, recipe.ingredients)
   setHtmlMultiline(descriptionParagraph, recipe.description)
+
+  fillRecipeAuthor(await fetchUser(recipe.userId))
+}
+
+const fillRecipeAuthor = (user) => {
+  const authorParagraph = $('#recipe-author')
+  authorParagraph.text(`${user.firstName} ${user.lastName}`)
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -153,6 +166,9 @@ const createRecipeView = () => {
 
       <h2>Gaminimo budas</h2>
       <div id="recipe-description" class="description"></div>
+
+      <h2>Autorius</h2>
+      <p id="recipe-author"></p>
 
       <h2>Komentarai</h2>
       <div id="recipe-comments">(TODO)</div>
