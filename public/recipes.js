@@ -151,20 +151,21 @@ const onRecipeFormSubmit = async () => {
 
 const createRecipeForm = () => {
   return $(`
+  <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
     <div id="recipe-form">
-      <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
+      
 
       <form action="javascript:void(0);">
         <label for="recipe-form-title">Pabadinimas: </label>
-        <input type="text" name="title" id="recipe-form-title" required />
+        <input class="recipe-form-title" type="text" name="title" id="recipe-form-title" required />
         <br />
 
         <label for="recipe-form-ingredients">Ingredientai: </label>
-        <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+        <input class="recipe-form-ingridients" type="text" name="ingredients" id="recipe-form-ingredients" required />
         <br />
 
         <label for="recipe-form-description">Gaminimo budas: </label>
-        <input type="text" name="description" id="recipe-form-description" required />
+        <input class="recipe-form-description" type="text" name="description" id="recipe-form-description" required />
         <br />
 
         <button type="submit" onclick="onRecipeFormSubmit()">Sukurti</button>

@@ -85,3 +85,25 @@ a:hover {
 .comment-container {
     border: 1px solid red;
 }
+
+.recipe-form-title {
+    margin-left: 41px;
+}
+
+.recipe-form-ingridients {
+    margin-left: 50px;
+}
+
+.recipe-form-description {
+    margin-left: 13px;
+}
+
+#recipe-form {
+    height: 250px;
+    margin-top: 40px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    margin-left: auto;
+    margin-top: 50px;
+    line-height: 2;
+}
