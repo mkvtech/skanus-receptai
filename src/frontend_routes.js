@@ -11,5 +11,6 @@ module.exports = (app) => {
 
   app.get('/debug', setSessionAuthentication, authenticate('jwt'), view('debug'))
   app.get('/home', setSessionAuthentication, authenticate('jwt'), view('home'))
+  app.get('/recipes', setSessionAuthentication, authenticate('jwt'), view('recipes'))
   app.get('/recipes-example', setSessionAuthentication, authenticate('jwt'), view('recipes-example'))
 }
