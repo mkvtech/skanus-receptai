@@ -65,6 +65,19 @@ module.exports = (app) => {
     }
   )
 
+  app.get(
+    '/currentUser',
+    (req, res, next) => {
+      req.authentication = req.session.authentication
+      next()
+    },
+    authenticate('jwt'),
+
+    (req, res) => {
+      res.send({ currentUser: req.user })
+    }
+  )
+
   app.get('/logout', (req, res) => {
     delete req.session.authentication
     res.end('You are now logged out')
