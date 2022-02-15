@@ -3,6 +3,7 @@
 let jwt
 const recipesLinksContainer = $('#list-of-recipes')
 const rightSideContainer = $('#right-side-container')
+let currentUser
 let recipes = []
 var links = document.getElementsByClassName('nav-links')
 
@@ -32,7 +33,7 @@ const fetchJwt = async () => {
   return response.data
 }
 
-const fetchRecipes = async (jwt) => {
+const fetchRecipes = async () => {
   const response = await axios.get('/api/recipes', { headers: { Authorization: `Bearer ${jwt}` } })
   return response.data.data
 }
@@ -42,9 +43,14 @@ const fetchUser = async (userId) => {
   return response.data.data[0]
 }
 
-const fetchComments = async(recipeId) => {
+const fetchComments = async (recipeId) => {
   const response = await axios.get(`/api/comments?recipeId=${recipeId}`, { headers: { Authorization: `Bearer ${jwt}` } })
   return response.data.data
+}
+
+const fetchCurrentUser = async () => {
+  const response = await axios.get('/currentUser', { headers: { Authorization: `Bearer ${jwt}` } })
+  return response.data.currentUser
 }
 
 const renderRecipesMenu = (recipes) => {
@@ -63,6 +69,18 @@ const renderRecipeLink = (recipe) => {
       </a>
     </li>
   `
+}
+
+// eslint-disable-next-line no-unused-vars
+const onAllRecipes = () => {
+  renderRecipesMenu(recipes)
+}
+
+// eslint-disable-next-line no-unused-vars
+const onMyRecipes = () => {
+  const myRecipes = recipes.filter((recipe) => recipe.id === currentUser.id)
+
+  renderRecipesMenu(myRecipes)
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -211,6 +229,7 @@ const recipeView = createRecipeView()
 
 ;(async () => {
   jwt = await fetchJwt()
-  recipes = await fetchRecipes(jwt)
+  currentUser = await fetchCurrentUser()
+  recipes = await fetchRecipes()
   renderRecipesMenu(recipes)
 })()
