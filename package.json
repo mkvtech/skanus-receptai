@@ -50,6 +50,7 @@
     "@feathersjs/transport-commons": "^4.5.12",
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
+    "connect-sqlite3": "^0.9.13",
     "cors": "^2.8.5",
     "express-session": "^1.17.2",
     "feathers-sequelize": "^6.3.2",
