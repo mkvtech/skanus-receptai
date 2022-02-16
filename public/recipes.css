@@ -28,7 +28,7 @@ font-size: 35px;
     height: 47px;
     justify-content: space-between;
     padding: 0.1rem 1.5rem;
-    background-color: lightgray;
+    background-color: rgb(235, 235, 235);
 }
 .nav-links{
     font-size: 15px;
@@ -39,14 +39,16 @@ font-size: 35px;
     padding: 4px 12px;
 }
 
-a, a:visited, a:hover, a:active {
+/* nav color change */
+ a, a:visited, a:hover, a:active {
     color: #135DEC;
     text-decoration: none;
 }
 
 a:hover {
-    color: white;
+    color: #ff6161c9;
 }
+
 .search-form-container{
     display: flex;
     align-items: center;

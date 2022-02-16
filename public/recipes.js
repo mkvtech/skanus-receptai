@@ -7,9 +7,22 @@ let currentUser
 let recipes = []
 var links = document.getElementsByClassName('nav-links')
 
+var prevColor = null;
+
 function changeColorToWhite(e) {
-  e.target.style.color = e.target.style.color ? null : 'white'
+  if(prevColor) {
+    prevColor.target.style.color = '';
+  }
+  e.target.style.color = '#FA2E07';
+  prevColor = e;
 }
+
+// Color stayed the same after switching tabs
+// function changeColorToWhite(e) {
+//   e.target.style.color = e.target.style.color ? null : 'white'
+// }
+
+
 
 for (var i = 0; i < links.length; i++) {
   links[i].addEventListener('click', changeColorToWhite)
