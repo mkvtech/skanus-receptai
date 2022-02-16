@@ -70,7 +70,7 @@ a:hover {
 .left-side-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .left-side-container li{
     padding: 1rem;
