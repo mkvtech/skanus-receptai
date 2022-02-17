@@ -1,13 +1,15 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
 
+const { forbidFields } = require('../../hooks')
+
 module.exports = {
   before: {
     all: [authenticate('jwt')],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
+    create: [forbidFields('id', 'userId')],
+    update: [forbidFields('id', 'userId')],
+    patch: [forbidFields('id', 'userId')],
     remove: [],
   },
 
