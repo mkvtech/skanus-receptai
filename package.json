@@ -24,13 +24,14 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
-    "prettier": "npx prettier --write .",
-    "test": "npm run lint && npm run jest",
-    "lint": "eslint src/. test/. --config .eslintrc.json --fix",
     "dev": "nodemon src/",
     "start": "node src/",
     "db:sync": "node ./migrations/sync.js",
 
+    "prettier": "npx prettier --check src/. test/. public/.",
+    "lint": "eslint src/. test/. --config .eslintrc.json",
+
+    "test": "npm run lint && npm run prettier && npm run jest",
     "test:integration": "npx jest --config ./test/integration/jest.config.js -- ./test/integration/*"
   },
   "standard": {
