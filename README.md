@@ -35,7 +35,7 @@ Note: using Node version `v14` until this issue is resolved: https://github.com/
 
 ## Testing
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
+`npm test` will run linters and integration tests.
 
 ## Scripts
 

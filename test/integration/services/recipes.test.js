@@ -1,4 +1,4 @@
-const app = require('../../src/app')
+const app = require('../../../src/app')
 
 describe("'recipes' service", () => {
   it('registered the service', () => {

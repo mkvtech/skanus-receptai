@@ -19,6 +19,24 @@
       "type": "node",
       "request": "launch",
       "program": "${file}"
+    },
+
+    {
+      "name": "Debug single Jest integration test",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--config",
+        "${workspaceRoot}/test/integration/jest.config.js",
+        "--testNamePattern",
+        "${selectedText}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
     }
   ]
 }

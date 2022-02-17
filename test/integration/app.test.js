@@ -1,6 +1,6 @@
 const axios = require('axios')
 const url = require('url')
-const app = require('../src/app')
+const app = require('../../src/app')
 
 const port = app.get('port') || 8998
 const getUrl = (pathname) =>

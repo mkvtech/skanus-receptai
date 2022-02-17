@@ -1,4 +1,4 @@
-const app = require('../src/app')
+const app = require('../../src/app')
 
 describe('authentication', () => {
   it('registered the authentication service', () => {
@@ -6,25 +6,25 @@ describe('authentication', () => {
   })
 
   describe('local strategy', () => {
-    const userInfo = {
+    const userCredentials = {
       email: 'someone@example.com',
       password: 'supersecret',
-      firstName: 'John',
-      lastName: 'Doe',
     }
 
-    beforeAll(async () => {
-      try {
-        await app.service('api/users').create(userInfo)
-      } catch (error) {
-        // Do nothing, it just means the user already exists and can be tested
-      }
+    const userData = {
+      firstName: 'John',
+      lastName: 'Doe',
+      ...userCredentials,
+    }
+
+    beforeEach(async () => {
+      await app.service('api/users').create(userData)
     })
 
     it('authenticates user and creates accessToken', async () => {
       const { user, accessToken } = await app.service('api/authentication').create({
         strategy: 'local',
-        ...userInfo,
+        ...userCredentials,
       })
 
       expect(accessToken).toBeTruthy()
