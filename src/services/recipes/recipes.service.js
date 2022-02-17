@@ -1,11 +1,10 @@
 // Initializes the `recipes` service on path `/recipes`
 const { Recipes } = require('./recipes.class')
-const createModel = require('../../models/recipes.model')
 const hooks = require('./recipes.hooks')
 
 module.exports = function (app) {
   const options = {
-    Model: createModel(app),
+    Model: app.get('models').recipes,
     paginate: app.get('paginate'),
   }
 

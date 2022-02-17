@@ -1,11 +1,10 @@
 // Initializes the `comments` service on path `/comments`
 const { Comments } = require('./comments.class')
-const createModel = require('../../models/comments.model')
 const hooks = require('./comments.hooks')
 
 module.exports = function (app) {
   const options = {
-    Model: createModel(app),
+    Model: app.get('models').comments,
     paginate: app.get('paginate'),
   }
 

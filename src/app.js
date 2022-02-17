@@ -18,6 +18,7 @@ const channels = require('./channels')
 const authentication = require('./authentication')
 
 const sequelize = require('./sequelize')
+const models = require('./models')
 
 const frontendRoutes = require('./frontend_routes')
 const sessionAuthentication = require('./session_authentication')
@@ -45,6 +46,7 @@ app.configure(express.rest())
 app.configure(socketio())
 
 app.configure(sequelize)
+app.configure(models)
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware)

@@ -1,11 +1,10 @@
 // Initializes the `users` service on path `/users`
 const { Users } = require('./users.class')
-const createModel = require('../../models/users.model')
 const hooks = require('./users.hooks')
 
 module.exports = function (app) {
   const options = {
-    Model: createModel(app),
+    Model: app.get('models').users,
     paginate: app.get('paginate'),
   }
 
