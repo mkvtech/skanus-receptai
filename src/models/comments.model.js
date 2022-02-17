@@ -27,8 +27,8 @@ module.exports = function (app) {
   )
 
   comments.associate = function (models) {
-    comments.belongsTo(models.users)
-    comments.belongsTo(models.recipes)
+    comments.belongsTo(models.users, { foreignKey: { allowNull: false } })
+    comments.belongsTo(models.recipes, { foreignKey: { allowNull: false } })
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   }

@@ -39,8 +39,8 @@ module.exports = function (app) {
   )
 
   users.associate = function (models) {
-    users.hasMany(models.recipes)
-    users.hasMany(models.comments)
+    users.hasMany(models.recipes, { foreignKey: { allowNull: false } })
+    users.hasMany(models.comments, { foreignKey: { allowNull: false } })
   }
 
   return users
