@@ -27,10 +27,8 @@
     "dev": "nodemon src/",
     "start": "node src/",
     "db:sync": "node ./migrations/sync.js",
-
     "prettier": "npx prettier --check src/. test/. public/.",
     "lint": "eslint src/. test/. --config .eslintrc.json",
-
     "test": "npm run lint && npm run prettier && npm run jest",
     "test:integration": "npx jest --config ./test/integration/jest.config.js -- ./test/integration/*"
   },
@@ -54,6 +52,7 @@
     "compression": "^1.7.4",
     "connect-sqlite3": "^0.9.13",
     "cors": "^2.8.5",
+    "ejs": "^3.1.6",
     "express-session": "^1.17.2",
     "feathers-sequelize": "^6.3.2",
     "helmet": "^4.6.0",

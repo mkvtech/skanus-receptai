@@ -45,6 +45,8 @@ app.use('/', express.static(app.get('public')))
 app.configure(express.rest())
 app.configure(socketio())
 
+app.set('view engine', 'ejs')
+
 app.configure(sequelize)
 app.configure(models)
 

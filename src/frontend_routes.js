@@ -13,4 +13,6 @@ module.exports = (app) => {
   app.get('/home', setSessionAuthentication, authenticate('jwt'), view('home'))
   app.get('/recipes', setSessionAuthentication, authenticate('jwt'), view('recipes'))
   app.get('/recipes-example', setSessionAuthentication, authenticate('jwt'), view('recipes-example'))
+
+  app.get('/test', (req, res) => res.render('pages/index.html.ejs'))
 }
