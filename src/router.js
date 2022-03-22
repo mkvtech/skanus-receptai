@@ -13,4 +13,7 @@ router.get('/debug_protected', setSessionAuthentication(), authenticate('jwt'), 
 const applicationController = require('./controllers/applicationController')
 router.get('/', setSessionAuthentication(), allowAnonymous(), authenticate('jwt', 'anonymous'), applicationController.index)
 
+const authorsRecipesController = require('./controllers/authorsRecipesController')
+router.get('/author', setSessionAuthentication(), allowAnonymous(), authenticate('jwt', 'anonymous'), authorsRecipesController.index)
+
 module.exports = router
