@@ -30,7 +30,7 @@
     "prettier": "npx prettier --check src/. test/. public/.",
     "lint": "eslint src/. test/. --config .eslintrc.json",
     "test": "npm run lint && npm run prettier && npm run jest",
-    "test:integration": "npx jest --config ./test/integration/jest.config.js -- ./test/integration/*"
+    "test:unit": "npx jest --config ./test/unit/jest.config.js -- ./test/unit/*"
   },
   "standard": {
     "env": [

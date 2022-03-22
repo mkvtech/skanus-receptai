@@ -35,7 +35,7 @@ Note: using Node version `v14` until this issue is resolved: https://github.com/
 
 ## Testing
 
-`npm test` will run linters and integration tests.
+`npm test` will run linters and unit tests.
 
 ## Scripts
 

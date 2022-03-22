@@ -22,7 +22,7 @@
     },
 
     {
-      "name": "Debug single Jest integration test",
+      "name": "Debug single Jest unit test",
       "type": "node",
       "request": "launch",
       "runtimeArgs": [
@@ -30,7 +30,7 @@
         "${workspaceRoot}/node_modules/jest/bin/jest.js",
         "--runInBand",
         "--config",
-        "${workspaceRoot}/test/integration/jest.config.js",
+        "${workspaceRoot}/test/unit/jest.config.js",
         "--testNamePattern",
         "${selectedText}"
       ],
