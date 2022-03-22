@@ -7,25 +7,17 @@
   "parserOptions": {
     "ecmaVersion": 2018
   },
-  "extends": [
-    "eslint:recommended"
-  ],
+  "extends": ["eslint:recommended"],
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "windows"
-    ],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "windows"],
     "quotes": [
       "error",
-      "single"
+      "single",
+      {
+        "avoidEscape": true
+      }
     ],
-    "semi": [
-      "error",
-      "always"
-    ]
+    "semi": ["error", "never"]
   }
 }

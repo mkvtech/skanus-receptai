@@ -10,10 +10,7 @@
     "entity": "user",
     "service": "api/users",
     "secret": "suJekRWliwM53Dd+9uSDqjhJzZU=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
+    "authStrategies": ["jwt", "local", "anonymous"],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -28,5 +25,9 @@
       "passwordField": "password"
     }
   },
-  "sqlite": "sqlite://skanus_receptai.sqlite"
+  "sqlite": "sqlite://skanus_receptai.sqlite",
+  "other": {
+    "afterLoginRedirect": "/recipes",
+    "afterSignupRedirect": "/recipes"
+  }
 }

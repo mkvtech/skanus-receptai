@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-const { comments } = require('../models');
+const { comments } = require('../models')
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await comments.bulkCreate([
       {
         id: 1,
@@ -28,10 +28,10 @@ module.exports = {
         text: 'Nice recipe!',
         rating: 5,
       },
-    ]);
+    ])
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Comments', null, {});
-  }
-};
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Comments', null, {})
+  },
+}

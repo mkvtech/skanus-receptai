@@ -1,14 +1,16 @@
-const { authenticate } = require('@feathersjs/authentication').hooks;
+const { authenticate } = require('@feathersjs/authentication').hooks
+
+const { setCurrentUserId, forbidFields } = require('../../hooks')
 
 module.exports = {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [authenticate('jwt')],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
-    remove: []
+    create: [forbidFields('id', 'userId'), setCurrentUserId('userId')],
+    update: [forbidFields('id', 'userId')],
+    patch: [forbidFields('id', 'userId')],
+    remove: [],
   },
 
   after: {
@@ -18,7 +20,7 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   error: {
@@ -28,6 +30,6 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
-};
+    remove: [],
+  },
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+  </head>
+  <body>
+    <p>Remove this page after proper UI is implemented</p>
+
+    <h1>Recipes</h1>
+
+    <ul id="recipes-list"></ul>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+      integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      const fetchJwt = async () => {
+        const response = await axios.get('/jwt')
+        return response.data
+      }
+
+      const fetchRecipes = async () => {
+        const token = await fetchJwt()
+
+        const response = await axios.get('/api/recipes', { headers: { Authorization: `Bearer ${token}` } })
+        return response.data.data
+      }
+
+      const renderRecipes = async () => {
+        const recipesList = $('#recipes-list')
+
+        const recipes = await fetchRecipes()
+
+        recipes.forEach((recipe) => {
+          recipesList.append(`<li>${JSON.stringify(recipe)}</li>`)
+        })
+      }
+
+      ;(async () => await renderRecipes())()
+    </script>
+  </body>
+</html>

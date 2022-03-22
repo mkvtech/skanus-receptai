@@ -1,13 +1,16 @@
-const { AuthenticationService, JWTStrategy } = require('@feathersjs/authentication');
-const { LocalStrategy } = require('@feathersjs/authentication-local');
-const { expressOauth } = require('@feathersjs/authentication-oauth');
+const { AuthenticationService, JWTStrategy } = require('@feathersjs/authentication')
+const { LocalStrategy } = require('@feathersjs/authentication-local')
+const { expressOauth } = require('@feathersjs/authentication-oauth')
 
-module.exports = app => {
-  const authentication = new AuthenticationService(app);
+const { AnonymousStrategy } = require('./authentication/anonymousStrategy')
 
-  authentication.register('jwt', new JWTStrategy());
-  authentication.register('local', new LocalStrategy());
+module.exports = (app) => {
+  const authentication = new AuthenticationService(app)
 
-  app.use('/api/authentication', authentication);
-  app.configure(expressOauth());
-};
+  authentication.register('jwt', new JWTStrategy())
+  authentication.register('local', new LocalStrategy())
+  authentication.register('anonymous', new AnonymousStrategy())
+
+  app.use('/api/authentication', authentication)
+  app.configure(expressOauth())
+}

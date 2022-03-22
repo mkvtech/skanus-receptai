@@ -10,31 +10,32 @@ This project uses [Feathers](http://feathersjs.com). An open source web framewor
 
 Getting up and running is as easy as 1, 2, 3.
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed. On Windows PowerShell with [nvm-windows](https://github.com/coreybutler/nvm-windows):
 
-    ```bash
-    node --version
-    npm --version
-    ```
+   ```bash
+   nvm use $(Get-Content .nvmrc)
+   node --version # v14.16.0
+   npm --version # 6.14.11
+   ```
 
-Note: using Node version `v14.0.0` until this issue is resolved: https://github.com/npm/cli/issues/4234
+Note: using Node version `v14` until this issue is resolved: https://github.com/npm/cli/issues/4234
 
-2. Install your dependencies
+2. Install your dependencies:
 
-    ```
-    cd path/to/skanus-receptai
-    npm install
-    ```
+   ```
+   cd path/to/skanus-receptai
+   npm install
+   ```
 
-3. Start your app
+3. Start your app:
 
-    ```
-    npm start
-    ```
+   ```
+   npm start
+   ```
 
 ## Testing
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
+`npm test` will run linters and integration tests.
 
 ## Scripts
 
@@ -89,3 +90,5 @@ For more information on all the things you can do with Feathers visit [docs.feat
 Feathers Sequelize adapter: https://www.npmjs.com/package/feathers-sequelize
 
 About Sequelize seeds and migrations: https://github.com/sequelize/cli#usage, https://sequelize.org/master/manual/migrations.html
+
+About feathers' session authentication: https://docs.feathersjs.com/cookbook/express/view-engine.html#using-authentication

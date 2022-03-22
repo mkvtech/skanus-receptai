@@ -1,5 +1,3 @@
-const { Service } = require('feathers-sequelize');
+const { Service } = require('feathers-sequelize')
 
-exports.Comments = class Comments extends Service {
-
-};
+exports.Comments = class Comments extends Service {}
