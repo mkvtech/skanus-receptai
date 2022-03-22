@@ -7,22 +7,20 @@ let currentUser
 let recipes = []
 var links = document.getElementsByClassName('nav-links')
 
-var prevColor = null;
+var prevColor = null
 
 function changeColorToWhite(e) {
-  if(prevColor) {
-    prevColor.target.style.color = '';
+  if (prevColor) {
+    prevColor.target.style.color = ''
   }
-  e.target.style.color = '#FA2E07';
-  prevColor = e;
+  e.target.style.color = '#FA2E07'
+  prevColor = e
 }
 
 // Color stayed the same after switching tabs
 // function changeColorToWhite(e) {
 //   e.target.style.color = e.target.style.color ? null : 'white'
 // }
-
-
 
 for (var i = 0; i < links.length; i++) {
   links[i].addEventListener('click', changeColorToWhite)
@@ -57,7 +55,9 @@ const fetchUser = async (userId) => {
 }
 
 const fetchComments = async (recipeId) => {
-  const response = await axios.get(`/api/comments?recipeId=${recipeId}`, { headers: { Authorization: `Bearer ${jwt}` } })
+  const response = await axios.get(`/api/comments?recipeId=${recipeId}`, {
+    headers: { Authorization: `Bearer ${jwt}` },
+  })
   return response.data.data
 }
 
@@ -103,7 +103,7 @@ const onRecipeSelect = (recipeId) => {
   rightSideContainer.empty()
   rightSideContainer.html(recipeView)
 
-  const recipe = recipes.find(recipe => recipe.id === recipeId)
+  const recipe = recipes.find((recipe) => recipe.id === recipeId)
 
   fillRecipeView(recipe)
 }
@@ -126,7 +126,7 @@ const onRecipeEdit = () => {
 }
 
 const setHtmlMultiline = (element, multilineText) => {
-  element.html(multilineText.split('\n').map(line => `<p>${line}</p>`))
+  element.html(multilineText.split('\n').map((line) => `<p>${line}</p>`))
 }
 
 const fillRecipeView = async (recipe) => {
@@ -186,7 +186,7 @@ const createRecipeForm = () => {
       <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
 
       <form action="javascript:void(0);">
-        <label for="recipe-form-title">Pabadinimas: </label>
+        <label for="recipe-form-title">Pavadinimas: </label>
         <input type="text" name="title" id="recipe-form-title" required />
         <br />
 
