@@ -186,7 +186,7 @@ const createRecipeForm = () => {
       <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
 
       <form action="javascript:void(0);">
-        <label for="recipe-form-title">Pavadinimas: </label>
+        <label for="recipe-form-title">Pavaadinimas: </label>
         <input type="text" name="title" id="recipe-form-title" required />
         <br />
 
