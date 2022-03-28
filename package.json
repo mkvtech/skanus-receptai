@@ -57,6 +57,7 @@
     "express-session": "^1.17.2",
     "feathers-sequelize": "^6.3.2",
     "helmet": "^4.6.0",
+    "lodash": "^4.17.21",
     "sequelize": "^6.16.1",
     "serve-favicon": "^2.5.0",
     "sqlite3": "^5.0.2",
