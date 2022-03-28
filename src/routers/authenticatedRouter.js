@@ -8,11 +8,13 @@ const DebugController = require('../controllers/debugController')
 module.exports = (app) => {
   const authenticatedRouter = express.Router()
 
-  authenticatedRouter.use(setSessionAuthentication())
-  authenticatedRouter.use(authenticate('jwt'))
+  const middleware = [
+    setSessionAuthentication(),
+    authenticate('jwt'),
+  ]
 
   const debugController = new DebugController(app)
-  authenticatedRouter.get('/debug_protected', debugController.index)
+  authenticatedRouter.get('/debug_protected', middleware, debugController.index)
 
   return authenticatedRouter
 }

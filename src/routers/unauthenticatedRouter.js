@@ -10,15 +10,18 @@ const RecipesController = require('../controllers/recipesController')
 
 module.exports = (app) => {
   const unauthenticatedRouter = express.Router()
-  unauthenticatedRouter.use(setSessionAuthentication())
-  unauthenticatedRouter.use(allowAnonymous())
-  unauthenticatedRouter.use(authenticate('jwt', 'anonymous'))
+
+  const middleware = [
+    setSessionAuthentication(),
+    allowAnonymous(),
+    authenticate('jwt', 'anonymous'),
+  ]
 
   const debugController = new DebugController(app)
-  unauthenticatedRouter.get('/debug', debugController.index)
+  unauthenticatedRouter.get('/debug', middleware, debugController.index)
 
   const applicationController = new ApplicationController(app)
-  unauthenticatedRouter.get('/', applicationController.index)
+  unauthenticatedRouter.get('/', middleware, applicationController.index)
 
   const recipesController = new RecipesController(app)
   unauthenticatedRouter.get('/recipes', recipesController.index)
