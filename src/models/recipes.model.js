@@ -38,7 +38,7 @@ module.exports = function (app) {
   }
 
   recipes.prototype.generatePageLink = function () {
-    return `https://localhost:3000/recipes/${this.id}`
+    return `${app.get('utils').fullBaseUrl}/recipes/${this.id}`
   }
 
   return recipes

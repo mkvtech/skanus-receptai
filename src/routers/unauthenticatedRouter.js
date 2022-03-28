@@ -22,6 +22,7 @@ module.exports = (app) => {
 
   const recipesController = new RecipesController(app)
   unauthenticatedRouter.get('/recipes', recipesController.index)
+  unauthenticatedRouter.get('/recipes/:id', recipesController.show)
 
   return unauthenticatedRouter
 }
