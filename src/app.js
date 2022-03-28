@@ -23,6 +23,8 @@ const models = require('./models')
 const frontendRoutes = require('./frontend_routes')
 const sessionAuthentication = require('./session_authentication')
 
+const appUtils = require('./appUtils')
+
 require('express-async-errors')
 
 const app = express(feathers())
@@ -68,6 +70,8 @@ app.configure(frontendRoutes)
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound())
 app.use(express.errorHandler({ logger }))
+
+app.configure(appUtils)
 
 app.hooks(appHooks)
 
