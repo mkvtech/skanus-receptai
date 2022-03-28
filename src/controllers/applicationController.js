@@ -1,6 +1,8 @@
-class ApplicationController {
+const BaseController = require('./baseController')
+
+class ApplicationController extends BaseController {
   constructor(app) {
-    this.app = app
+    super(app)
   }
 
   index = async (req, res) => {

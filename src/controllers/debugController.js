@@ -1,6 +1,8 @@
-class DebugController {
+const BaseController = require('./baseController')
+
+class DebugController extends BaseController {
   constructor(app) {
-    this.app = app
+    super(app)
   }
 
   index = async (req, res) => {
@@ -16,7 +18,7 @@ class DebugController {
         },
       },
       app: {
-        models: Object.keys(this.app.get('models')),
+        models: Object.keys(this.models),
       },
     })
   }
