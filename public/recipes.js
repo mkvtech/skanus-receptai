@@ -116,6 +116,12 @@ const onNewRecipe = () => {
   rightSideContainer.html(recipeForm)
 }
 
+const onRecipeFormAddIgredient = () => {
+  //console.log(recipeAddIgredient)
+  document.getElementById('add-igredient').innerHTML += createRecipeAddIgredient()
+  //console.log(test)
+}
+
 const onRecipeEdit = () => {
   console.log('Opening form for existing recipe...')
 
@@ -183,27 +189,48 @@ const onRecipeFormSubmit = async () => {
 const createRecipeForm = () => {
   return $(`
     <div id="recipe-form">
-      <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
+    <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
+    <div id="recepto-forma">
+    <form id="forma" action="javascript:void(0); >
+      <label for="recipe-form-title"> Recipe name: </label>
+      <br />
+      <input type="text" name="title" id="recipe-form-title" required />
+      
+      <br />
 
-      <form action="javascript:void(0);">
-        <label for="recipe-form-title">Pavaadinimas: </label>
-        <input type="text" name="title" id="recipe-form-title" required />
-        <br />
+      <label for="recipe-form-description">Steps to make: </label>
+      <br />
+      <input type="text" name="description" id="recipe-form-description" required />
+      <br />
 
-        <label for="recipe-form-ingredients">Ingredientai: </label>
-        <input type="text" name="ingredients" id="recipe-form-ingredients" required />
-        <br />
-
-        <label for="recipe-form-description">Gaminimo budas: </label>
-        <input type="text" name="description" id="recipe-form-description" required />
-        <br />
-
-        <button type="submit" onclick="onRecipeFormSubmit()">Sukurti</button>
-      </form>
+<div id="add-igredient">
+      <label for="recipe-form-ingredients">Ingredient: </label>
+      <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+      <label for="recipe-form-ingredients">Portion: </label>
+      <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+      <br />
+</div>
+<div class="break"></div>
+      <button id="button-onclick" onclick="onRecipeFormAddIgredient()">Add ingredient</button>
+      <br />
+      <div class="break"></div>
+      <button id="sukurti" type="submit" onclick="onRecipeFormSubmit()">Submit</button>
+    </form>
+    </div>
     </div>
   `)
 }
+const createRecipeAddIgredient = () => {
+  return `
 
+  <label for="recipe-form-ingredients">Ingredient: </label>
+  <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+  <label for="recipe-form-ingredients">Portion: </label>
+  <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+  <br />
+
+  `
+}
 const createRecipeView = () => {
   return $(`
     <div id="recipe-view">
@@ -239,6 +266,7 @@ const renderComment = (comment) => {
 
 const recipeForm = createRecipeForm()
 const recipeView = createRecipeView()
+const recipeAddIgredient = createRecipeAddIgredient()
 
 ;(async () => {
   jwt = await fetchJwt()
