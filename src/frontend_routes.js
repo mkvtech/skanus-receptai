@@ -3,7 +3,7 @@ const { authenticate } = require('@feathersjs/express')
 
 const setSessionAuthentication = require('./middleware/setSessionAuthentication')
 
-const router = require('./router')
+const createRouter = require('./router')
 
 module.exports = (app) => {
   const view = (file) => (req, res) => res.sendFile(path.join(app.get('public'), file + '.html'))
@@ -12,5 +12,5 @@ module.exports = (app) => {
   app.get('/recipes', setSessionAuthentication(), authenticate('jwt'), view('recipes'))
   app.get('/recipes-example', setSessionAuthentication(), authenticate('jwt'), view('recipes-example'))
 
-  app.use('/', router)
+  app.use('/', createRouter(app))
 }
