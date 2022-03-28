@@ -23,6 +23,8 @@ const models = require('./models')
 const frontendRoutes = require('./frontend_routes')
 const sessionAuthentication = require('./session_authentication')
 
+require('express-async-errors')
+
 const app = express(feathers())
 
 // Load app configuration

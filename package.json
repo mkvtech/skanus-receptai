@@ -53,6 +53,7 @@
     "connect-sqlite3": "^0.9.13",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
+    "express-async-errors": "^3.1.1",
     "express-session": "^1.17.2",
     "feathers-sequelize": "^6.3.2",
     "helmet": "^4.6.0",
