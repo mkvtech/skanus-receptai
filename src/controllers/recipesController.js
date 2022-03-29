@@ -8,7 +8,10 @@ class RecipesController extends BaseController {
   index = async (req, res) => {
     const recipes = await this.models.recipes.findAll()
 
-    res.render('pages/recipes/index.html.ejs', { recipes })
+    res.render('pages/recipes/index.html.ejs', {
+      recipes,
+      context: await this.viewContext(req),
+    })
   }
 
   show = async (req, res) => {
@@ -21,7 +24,8 @@ class RecipesController extends BaseController {
 
     res.render('pages/recipes/show.html.ejs', {
       recipe,
-      recipesUrl: `${this.utils.fullBaseUrl}/recipes`
+      recipesUrl: `${this.utils.fullBaseUrl}/recipes`,
+      context: await this.viewContext(req),
     })
   }
 }
