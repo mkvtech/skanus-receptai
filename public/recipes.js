@@ -118,10 +118,21 @@ const onNewRecipe = () => {
 
 const onRecipeFormAddIgredient = () => {
   //console.log(recipeAddIgredient)
-  document.getElementById('add-igredient').innerHTML += createRecipeAddIgredient()
+
+  const newData = document.createElement('div')
+  newData.innerHTML = createRecipeAddIgredient()
+  document.getElementById('add-igredient').appendChild(newData)
+
   //console.log(test)
 }
 
+const onRecipeFormAddStep = () => {
+  const newStep = document.createElement('input')
+  newStep.setAttribute('type', 'text')
+  newStep.setAttribute('name', 'steps')
+  newStep.setAttribute('class', 'recipe-form-steps')
+  document.getElementById('steps').appendChild(newStep)
+}
 const onRecipeEdit = () => {
   console.log('Opening form for existing recipe...')
 
@@ -185,48 +196,60 @@ const onRecipeFormSubmit = async () => {
   onRecipeSelect(newRecipe.id)
   renderRecipesMenu(recipes)
 }
-
 const createRecipeForm = () => {
   return $(`
-    <div id="recipe-form">
-    <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
-    <div id="recepto-forma">
-    <form id="forma" action="javascript:void(0); >
-      <label for="recipe-form-title"> Recipe name: </label>
-      <br />
-      <input type="text" name="title" id="recipe-form-title" required />
-      
-      <br />
+  <div id="recipe-form">
+  <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
+  <div id="recepto-forma">
+  <form id="forma" action="javascript:void(0); >
+    <label for="recipe-form-title"> Recipe name: </label>
+    <br />
+    <input type="text" name="title" id="recipe-form-title" required />
+    
+    <br />
 
-      <label for="recipe-form-description">Steps to make: </label>
-      <br />
-      <input type="text" name="description" id="recipe-form-description" required />
-      <br />
+    <label for="recipe-form-description">Description: </label>
+    <br />
+    <input type="text" name="description" id="recipe-form-description" required />
+    <br />
 
 <div id="add-igredient">
-      <label for="recipe-form-ingredients">Ingredient: </label>
-      <input type="text" name="ingredients" id="recipe-form-ingredients" required />
-      <label for="recipe-form-ingredients">Portion: </label>
-      <input type="text" name="ingredients" id="recipe-form-ingredients" required />
-      <br />
+    <label for="recipe-form-ingredients">Ingredient: </label>
+    <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+    <label for="recipe-form-ingredients">Portion: </label>
+    <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+    <br />
 </div>
 <div class="break"></div>
-      <button id="button-onclick" onclick="onRecipeFormAddIgredient()">Add ingredient</button>
-      <br />
-      <div class="break"></div>
-      <button id="sukurti" type="submit" onclick="onRecipeFormSubmit()">Submit</button>
-    </form>
-    </div>
-    </div>
+    <button id="button-onclick" onclick="onRecipeFormAddIgredient()">Add ingredient</button>
+    <br />
+    <div class="break"></div>
+    <div class="break"></div>
+    <div class="break"></div>
+    
+    <div id="steps">
+    <label for="recipe-form-steps">Steps to make: </label>
+    <br />
+    <input type="text" name="steps" class="recipe-form-steps" required />
+  </div>
+
+    <div class="break"></div>
+    <button id="button-onclick" onclick="onRecipeFormAddStep()">Add Step</button>
+    <br />
+    <div class="break"></div>
+    <button id="sukurti" type="submit" onclick="onRecipeFormSubmit()">Submit</button>
+  </form>
+  </div>
+  </div>
   `)
 }
 const createRecipeAddIgredient = () => {
   return `
 
   <label for="recipe-form-ingredients">Ingredient: </label>
-  <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+  <input type="text" name="ingredients" class="recipe-form-ingredients" required />
   <label for="recipe-form-ingredients">Portion: </label>
-  <input type="text" name="ingredients" id="recipe-form-ingredients" required />
+  <input type="text" name="ingredients" class="recipe-form-ingredients" required />
   <br />
 
   `
