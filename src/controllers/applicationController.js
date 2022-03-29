@@ -6,7 +6,7 @@ class ApplicationController extends BaseController {
   }
 
   index = async (req, res) => {
-    res.render('pages/index.html.ejs')
+    res.render('pages/index.html.ejs', { context: await this.viewContext(req) })
   }
 }
 

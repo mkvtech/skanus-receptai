@@ -54,6 +54,8 @@ app.set('view engine', 'ejs')
 app.configure(sequelize)
 app.configure(models)
 
+app.configure(appUtils)
+
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware)
 app.configure(authentication)
@@ -70,8 +72,6 @@ app.configure(frontendRoutes)
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound())
 app.use(express.errorHandler({ logger }))
-
-app.configure(appUtils)
 
 app.hooks(appHooks)
 
