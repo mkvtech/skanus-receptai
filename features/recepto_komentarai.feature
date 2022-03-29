@@ -2,7 +2,12 @@
 Savybė: Recepto komentarai
   Vartotojas gali komentuoti receptus
   
-  Scenarijus: 
+  Scenarijus: prisijungęs vartotojas gali komentuoti
     Duota vartojas yra prisijungęs
     Kai bando komentuoti receptus
-    Tada sėkmingai parašo komentarą prie recepto
+    Tada parašo komentarą prie recepto
+    
+   Scenarijus: vartotojas gali keisti komentarą
+    Duota vartotojas nori pakeisti komentarą
+    Kai vartotojas yra parašęs komentarą
+    Tada vartotojas keičia parašytą komentarą
