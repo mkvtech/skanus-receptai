@@ -1,3 +1,4 @@
+# language: lt
 Savybė: Neprisijungtas vartotojas gali skaityti receptus
   Vartotojas gali skaityti receptus neprisijungęs
   
