@@ -170,7 +170,7 @@ body {
   box-sizing: border-box;
   font-size: 16px;
 }
-#recipe-form-ingredients {
+.recipe-form-ingredients {
   margin-bottom: 7px;
   margin-top: 7px;
 }
@@ -220,5 +220,13 @@ body {
   background-color: #f3f4f6;
   text-decoration: none;
   transition-duration: 0.1s;
+}
+.recipe-form-steps {
+  width: 40%;
+  height: 30px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  display: block;
 }
 /* This is a single-line comment */
