@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagrindinis</title>
+</head>
+<body>
+  <%- include('../../partials/navbar.html.ejs', { context }); %>
+
+  <header>
+    <a href="<%= recipesUrl %>">Atgal į sąrašą</a>
+
+    <h1><%= recipe.title %></h1>
+
+    <p>Autorius: <%= recipe.user.getFullName() %></p>
+  </header>
+
+  <p>
+    <%= recipe.description %>
+  </p>
+
+  <!-- TODO: Comments -->
+</body>
+</html>

@@ -37,5 +37,9 @@ module.exports = function (app) {
     // See https://sequelize.org/master/manual/assocs.html
   }
 
+  recipes.prototype.generatePageLink = function () {
+    return `${app.get('utils').fullBaseUrl}/recipes/${this.id}`
+  }
+
   return recipes
 }
