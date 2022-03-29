@@ -22,11 +22,15 @@ class RecipesController extends BaseController {
       include: this.models.users
     })
 
-    res.render('pages/recipes/show.html.ejs', {
-      recipe,
-      recipesUrl: `${this.utils.fullBaseUrl}/recipes`,
-      context: await this.viewContext(req),
-    })
+    if (recipe) {
+      res.render('pages/recipes/show.html.ejs', {
+        recipe,
+        recipesUrl: `${this.utils.fullBaseUrl}/recipes`,
+        context: await this.viewContext(req),
+      })
+    } else {
+      res.sendStatus(404)
+    }
   }
 }
 
