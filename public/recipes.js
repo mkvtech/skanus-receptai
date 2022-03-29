@@ -7,22 +7,20 @@ let currentUser
 let recipes = []
 var links = document.getElementsByClassName('nav-links')
 
-var prevColor = null;
+var prevColor = null
 
 function changeColorToWhite(e) {
-  if(prevColor) {
-    prevColor.target.style.color = '';
+  if (prevColor) {
+    prevColor.target.style.color = ''
   }
-  e.target.style.color = '#FA2E07';
-  prevColor = e;
+  e.target.style.color = '#FA2E07'
+  prevColor = e
 }
 
 // Color stayed the same after switching tabs
 // function changeColorToWhite(e) {
 //   e.target.style.color = e.target.style.color ? null : 'white'
 // }
-
-
 
 for (var i = 0; i < links.length; i++) {
   links[i].addEventListener('click', changeColorToWhite)
@@ -57,7 +55,9 @@ const fetchUser = async (userId) => {
 }
 
 const fetchComments = async (recipeId) => {
-  const response = await axios.get(`/api/comments?recipeId=${recipeId}`, { headers: { Authorization: `Bearer ${jwt}` } })
+  const response = await axios.get(`/api/comments?recipeId=${recipeId}`, {
+    headers: { Authorization: `Bearer ${jwt}` },
+  })
   return response.data.data
 }
 
@@ -103,7 +103,7 @@ const onRecipeSelect = (recipeId) => {
   rightSideContainer.empty()
   rightSideContainer.html(recipeView)
 
-  const recipe = recipes.find(recipe => recipe.id === recipeId)
+  const recipe = recipes.find((recipe) => recipe.id === recipeId)
 
   fillRecipeView(recipe)
 }
@@ -116,6 +116,23 @@ const onNewRecipe = () => {
   rightSideContainer.html(recipeForm)
 }
 
+const onRecipeFormAddIgredient = () => {
+  //console.log(recipeAddIgredient)
+
+  const newData = document.createElement('div')
+  newData.innerHTML = createRecipeAddIgredient()
+  document.getElementById('add-igredient').appendChild(newData)
+
+  //console.log(test)
+}
+
+const onRecipeFormAddStep = () => {
+  const newStep = document.createElement('input')
+  newStep.setAttribute('type', 'text')
+  newStep.setAttribute('name', 'steps')
+  newStep.setAttribute('class', 'recipe-form-steps')
+  document.getElementById('steps').appendChild(newStep)
+}
 const onRecipeEdit = () => {
   console.log('Opening form for existing recipe...')
 
@@ -126,7 +143,7 @@ const onRecipeEdit = () => {
 }
 
 const setHtmlMultiline = (element, multilineText) => {
-  element.html(multilineText.split('\n').map(line => `<p>${line}</p>`))
+  element.html(multilineText.split('\n').map((line) => `<p>${line}</p>`))
 }
 
 const fillRecipeView = async (recipe) => {
@@ -179,31 +196,64 @@ const onRecipeFormSubmit = async () => {
   onRecipeSelect(newRecipe.id)
   renderRecipesMenu(recipes)
 }
-
 const createRecipeForm = () => {
   return $(`
-    <div id="recipe-form">
-      <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
+  <div id="recipe-form">
+  <header><h1 id="recipe-edit-form-title">New Recipe</h1></header>
+  <div id="recepto-forma">
+  <form id="forma" action="javascript:void(0); >
+    <label for="recipe-form-title"> Recipe name: </label>
+    <br />
+    <input type="text" name="title" id="recipe-form-title" required />
+    
+    <br />
 
-      <form action="javascript:void(0);">
-        <label for="recipe-form-title">Pabadinimas: </label>
-        <input type="text" name="title" id="recipe-form-title" required />
-        <br />
+    <label for="recipe-form-description">Description: </label>
+    <br />
+    <input type="text" name="description" id="recipe-form-description" required />
+    <br />
 
-        <label for="recipe-form-ingredients">Ingredientai: </label>
-        <input type="text" name="ingredients" id="recipe-form-ingredients" required />
-        <br />
+<div id="add-igredient">
+    <label for="recipe-form-ingredients">Ingredient: </label>
+    <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+    <label for="recipe-form-ingredients">Portion: </label>
+    <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+    <br />
+</div>
+<div class="break"></div>
+    <button id="button-onclick" onclick="onRecipeFormAddIgredient()">Add ingredient</button>
+    <br />
+    <div class="break"></div>
+    <div class="break"></div>
+    <div class="break"></div>
+    
+    <div id="steps">
+    <label for="recipe-form-steps">Steps to make: </label>
+    <br />
+    <input type="text" name="steps" class="recipe-form-steps" required />
+  </div>
 
-        <label for="recipe-form-description">Gaminimo budas: </label>
-        <input type="text" name="description" id="recipe-form-description" required />
-        <br />
-
-        <button type="submit" onclick="onRecipeFormSubmit()">Sukurti</button>
-      </form>
-    </div>
+    <div class="break"></div>
+    <button id="button-onclick" onclick="onRecipeFormAddStep()">Add Step</button>
+    <br />
+    <div class="break"></div>
+    <button id="sukurti" type="submit" onclick="onRecipeFormSubmit()">Submit</button>
+  </form>
+  </div>
+  </div>
   `)
 }
+const createRecipeAddIgredient = () => {
+  return `
 
+  <label for="recipe-form-ingredients">Ingredient: </label>
+  <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+  <label for="recipe-form-ingredients">Portion: </label>
+  <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+  <br />
+
+  `
+}
 const createRecipeView = () => {
   return $(`
     <div id="recipe-view">
@@ -239,6 +289,7 @@ const renderComment = (comment) => {
 
 const recipeForm = createRecipeForm()
 const recipeView = createRecipeView()
+const recipeAddIgredient = createRecipeAddIgredient()
 
 ;(async () => {
   jwt = await fetchJwt()

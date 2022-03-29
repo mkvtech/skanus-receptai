@@ -30,7 +30,7 @@
     "prettier": "npx prettier --check src/. test/. public/.",
     "lint": "eslint src/. test/. --config .eslintrc.json",
     "test": "npm run lint && npm run prettier && npm run jest",
-    "test:integration": "npx jest --config ./test/integration/jest.config.js -- ./test/integration/*"
+    "test:unit": "npx jest --config ./test/unit/jest.config.js -- ./test/unit/*"
   },
   "standard": {
     "env": [
@@ -53,10 +53,16 @@
     "connect-sqlite3": "^0.9.13",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
+    "express-async-errors": "^3.1.1",
     "express-session": "^1.17.2",
     "feathers-sequelize": "^6.3.2",
     "helmet": "^4.6.0",
+<<<<<<< HEAD
     "sequelize": "^6.17.0",
+=======
+    "lodash": "^4.17.21",
+    "sequelize": "^6.16.1",
+>>>>>>> ec1b8122048da331b92825c90703b39dd5367c8b
     "serve-favicon": "^2.5.0",
     "sqlite3": "^5.0.2",
     "winston": "^3.6.0"
@@ -65,8 +71,15 @@
     "axios": "^0.25.0",
     "eslint": "^8.11.0",
     "jest": "^27.5.1",
+    "jest-when": "^3.5.1",
     "nodemon": "^2.0.15",
+<<<<<<< HEAD
     "prettier": "^2.6.0",
     "sequelize-cli": "^6.4.1"
+=======
+    "prettier": "^2.5.1",
+    "sequelize-cli": "^6.4.1",
+    "supertest": "^6.2.2"
+>>>>>>> ec1b8122048da331b92825c90703b39dd5367c8b
   }
 }
