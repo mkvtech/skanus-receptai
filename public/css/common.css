@@ -11,7 +11,6 @@ div, p, h1 {
     max-width: 960px;
     min-height: calc(100vh - 60px); /* navbar height */
 
-    padding: 0 20px;
     background-color: #fff;
 }
 
