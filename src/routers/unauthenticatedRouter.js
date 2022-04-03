@@ -24,8 +24,8 @@ module.exports = (app) => {
   unauthenticatedRouter.get('/', middleware, applicationController.index)
 
   const recipesController = new RecipesController(app)
-  unauthenticatedRouter.get('/recipes', recipesController.index)
-  unauthenticatedRouter.get('/recipes/:id', recipesController.show)
+  unauthenticatedRouter.get('/recipes', middleware, recipesController.index)
+  unauthenticatedRouter.get('/recipes/:id', middleware, recipesController.show)
 
   return unauthenticatedRouter
 }
