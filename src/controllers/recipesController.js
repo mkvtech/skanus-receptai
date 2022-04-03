@@ -21,12 +21,17 @@ class RecipesController extends BaseController {
       where: {
         id: req.params.id,
       },
-      include: this.models.users
+      include: [
+        this.models.users,
+        this.models.recipe_ratings,
+      ],
     })
 
     if (recipe) {
       res.render('pages/recipes/show.html.ejs', {
         recipe,
+        totalRating: await recipe.getTotalRating(),
+        myRating: req.user && recipe.recipe_ratings.find((recipeRating) => recipeRating.userId === req.user.id)?.rating,
         recipesUrl: `${this.utils.fullBaseUrl}/recipes`,
         context: await this.viewContext(req),
       })

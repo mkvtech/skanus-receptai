@@ -42,5 +42,17 @@ module.exports = function (app) {
     return `${app.get('utils').fullBaseUrl}/recipes/${this.id}`
   }
 
+  recipes.prototype.getTotalRating = async function () {
+    const myRecipeRatings = await this.getRecipe_ratings()
+
+    if (!myRecipeRatings.length) {
+      return 0
+    }
+
+    const sum = myRecipeRatings.reduce((accumulator, current) => accumulator + current.rating, 0)
+
+    return sum / myRecipeRatings.length
+  }
+
   return recipes
 }
