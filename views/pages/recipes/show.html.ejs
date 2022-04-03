@@ -4,23 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Pagrindinis</title>
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/common.css">
+
+  <link rel="stylesheet" href="/css/pages/recipes/show.css">
 </head>
 <body>
   <%- include('../../partials/navbar.html.ejs', { context }); %>
 
-  <header>
-    <a href="<%= recipesUrl %>">Atgal į sąrašą</a>
+  <div class="main-container">
+    <header class="page-header">
+      <h1 class="page-title"><%= recipe.title %></h1>
 
-    <h1><%= recipe.title %></h1>
+      <p class="recipe-author"><%= recipe.user.getFullName() %></p>
+    </header>
 
-    <p>Autorius: <%= recipe.user.getFullName() %></p>
-  </header>
+    <p class="recipe-description">
+      <%= recipe.description %>
+    </p>
 
-  <p>
-    <%= recipe.description %>
-  </p>
+    <div class="recipe-bottom">
+      <!-- TODO: Count comments, rating, etc. -->
+    </div>
 
-  <!-- TODO: Comments -->
+    <!-- TODO: Comments -->
+  </div>
 </body>
 </html>

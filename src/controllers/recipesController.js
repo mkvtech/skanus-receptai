@@ -6,7 +6,9 @@ class RecipesController extends BaseController {
   }
 
   index = async (req, res) => {
-    const recipes = await this.models.recipes.findAll()
+    const recipes = await this.models.recipes.findAll({
+      include: this.models.users,
+    })
 
     res.render('pages/recipes/index.html.ejs', {
       recipes,
