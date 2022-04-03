@@ -8,14 +8,24 @@ module.exports = function (app) {
   const recipeRatings = sequelizeClient.define('recipe_ratings', {
     rating: {
       type: DataTypes.NUMBER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        min: { args: 1, msg: 'Rating must be 1 or greater' },
+        max: { args: 5, msg: 'Rating must be 5 or less' },
+      },
     }
   }, {
     hooks: {
       beforeCount(options) {
         options.raw = true
       }
-    }
+    },
+    indexes: [
+      {
+        fields: ['userId', 'recipeId'],
+        unique: true,
+      }
+    ]
   })
 
   recipeRatings.associate = function (models) {
