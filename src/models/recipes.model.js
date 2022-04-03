@@ -33,6 +33,7 @@ module.exports = function (app) {
   recipes.associate = function (models) {
     recipes.belongsTo(models.users, { foreignKey: { allowNull: false } })
     recipes.hasMany(models.comments, { foreignKey: { allowNull: false } })
+    recipes.hasMany(models.recipe_ratings, { foreignKey: { allowNull: false } })
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   }

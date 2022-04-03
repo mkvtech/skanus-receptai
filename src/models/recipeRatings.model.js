@@ -19,10 +19,10 @@ module.exports = function (app) {
   })
 
   recipeRatings.associate = function (models) {
-    // Define associations here
-    // See https://sequelize.org/master/manual/assocs.html
     recipeRatings.belongsTo(models.users, { foreignKey: { allowNull: false } })
     recipeRatings.belongsTo(models.recipes, { foreignKey: { allowNull: false } })
+    // Define associations here
+    // See https://sequelize.org/master/manual/assocs.html
   }
 
   return recipeRatings
