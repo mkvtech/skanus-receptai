@@ -1,4 +1,6 @@
+# language: lt
 Savybė: Naujo recepto sūkurimas
+
 Scenarijus:
 Duota Vartotojas yra prisijungęs
 Kai Bando sukurti receptą
