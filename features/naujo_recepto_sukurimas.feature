@@ -1,5 +1,5 @@
 # language: lt
-Savybė: Naujo recepto sūkurimas
+Savybė: Naujo recepto sukūrimas
 
 Scenarijus:
 Duota Vartotojas yra prisijungęs
