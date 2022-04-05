@@ -39,6 +39,32 @@ class RecipesController extends BaseController {
       res.sendStatus(404)
     }
   }
+
+  rate = async (req, res) => {
+    const recipe = await this.models.recipes.findOne({ where: { id: req.params.id } })
+    const recipeRating = await this.models.recipe_ratings.findOne({
+      where: {
+        userId: req.user.id,
+        recipeId: req.params.id,
+      },
+    })
+
+    if (!recipe) {
+      res.sendStatus(404)
+    } else {
+      if (!recipeRating) {
+        await this.models.recipe_ratings.create({
+          userId: req.user.id,
+          recipeId: req.params.id,
+          rating: req.body.rating,
+        })
+      } else {
+        await recipeRating.update({ rating: req.body.rating })
+      }
+
+      res.send({ newRating: await recipe.getTotalRating() })
+    }
+  }
 }
 
 module.exports = RecipesController

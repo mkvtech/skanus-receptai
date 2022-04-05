@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="/css/common.css">
 
   <link rel="stylesheet" href="/css/pages/recipes/show.css">
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+    integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
 </head>
 <body>
   <%- include('../../partials/navbar.html.ejs', { context }); %>
@@ -30,9 +37,9 @@
       <div class="recipe-rating">
         <div id="rater" data-initial-rating="<%= totalRating %>"></div>
 
-        <% if(myRating) { %>
-          <div class="recipe-current-user-rating">(Jūsų įvertinimas: <%= myRating %>)</div>
-        <% } %>
+        <div id="recipe-current-user-rating" class="<%= !myRating && 'display-none' %>">
+          (Jūsų įvertinimas: <%= myRating %>)
+        </div>
       </div>
       <!-- TODO: Count comments, rating, etc. -->
     </div>

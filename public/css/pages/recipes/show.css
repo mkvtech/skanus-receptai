@@ -25,7 +25,9 @@
     justify-content: center;
     align-items: center;
 
+    border-top: 2px solid #777;
     border-bottom: 2px solid #777;
+    padding: 16px;
 }
 
 .recipe-rating {
@@ -36,7 +38,7 @@
     margin: 10px 0;
 }
 
-.recipe-current-user-rating {
+#recipe-current-user-rating {
     color: #777;
     font-size: 12px;
     margin-top: 8px;
