@@ -1,0 +1,25 @@
+.recipe-author {
+    margin: 20px 0;
+    text-align: center;
+    color: #777;
+}
+
+.recipe-author {
+    display: flex;
+    flex-direction: row;
+}
+.recipe-author:before, .recipe-author:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid #ccc;
+    margin: auto 20px;
+}
+
+.recipe-description {
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+.recipe-bottom {
+    border-bottom: 2px solid #777;
+}
