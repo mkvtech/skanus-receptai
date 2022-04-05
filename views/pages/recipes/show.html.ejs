@@ -30,6 +30,18 @@
       <!-- TODO: Count comments, rating, etc. -->
     </div>
 
+    <div class="recipe-comments">
+      <!-- Comments -->
+      <% recipe.comments.forEach((comment) => { %>
+        <div class="recipes-comment">
+          <%= comment.user.firstName %>
+          <%= comment.user.lastName %>
+          <% console.log(comment.user) %>
+          <%= comment.text %>
+        </div>   
+    <% }) %>
+    </div>
+
     <!-- TODO: Comments -->
   </div>
 </body>
