@@ -3,7 +3,7 @@ Savybė: Recepto komentarai
   Vartotojas gali komentuoti receptus
   
   Scenarijus: prisijungęs vartotojas gali komentuoti
-    Duota vartojas yra prisijungęs
+    Duota vartotojas yra prisijungęs
     Kai bando komentuoti receptus
     Tada parašo komentarą prie recepto
     
