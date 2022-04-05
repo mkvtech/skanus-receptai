@@ -27,12 +27,20 @@
     </p>
 
     <div class="recipe-bottom">
-      rating: <%= totalRating %>
-      <%= myRating && `you rated: ${myRating}` %>
+      <div class="recipe-rating">
+        <div id="rater" data-initial-rating="<%= totalRating %>"></div>
+
+        <% if(myRating) { %>
+          <div class="recipe-current-user-rating">(Jūsų įvertinimas: <%= myRating %>)</div>
+        <% } %>
+      </div>
       <!-- TODO: Count comments, rating, etc. -->
     </div>
 
     <!-- TODO: Comments -->
   </div>
+
+  <script src="/packages/rater-js/index.js"></script>
+  <script src="/js/pages/recipes/show.js"></script>
 </body>
 </html>
