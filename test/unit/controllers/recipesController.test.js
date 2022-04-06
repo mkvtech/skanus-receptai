@@ -18,24 +18,46 @@ describe('recipesController', () => {
     })
 
     describe('with some recipes', () => {
-      it('renders recipe', async () => {
-        const author = await app.get('models').users.create({
+      let author, recipe
+
+      beforeEach(async () => {
+        author = await app.get('models').users.create({
           firstName: 'John',
           lastName: 'Doe',
           email: 'john-doe@example.com',
           password: 'password',
         })
 
-        const recipe = await app.get('models').recipes.create({
+        recipe = await app.get('models').recipes.create({
+          type: "Betboks",
           title: 'Sample Recipe',
           description: 'Recipe Description',
           ingredients: 'organic raw materials',
           userId: author.id,
         })
+      })
 
+      it('renders recipe', async () => {
         const response = await request.get(`/recipes/${recipe.id}`)
 
         expect(response.status).toBe(200)
+      })
+      
+      describe("comments", () => {
+        
+        it("renders comments", async () => {
+          const comment = await app.get('models').comments.create({
+            userId: author.id,
+            text: 'Kazkoks tekstas',
+            recipeId: recipe.id,
+            rating: 1,
+          })
+        const response = await request.get(`/recipes/${recipe.id}`)
+
+        expect(response.status).toBe(200)
+
+        expect(response.text).toMatch(/Kazkoks tekstas/)
+        })
       })
     })
   })

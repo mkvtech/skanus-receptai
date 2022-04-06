@@ -21,5 +21,44 @@
 }
 
 .recipe-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 2px solid #777;
     border-bottom: 2px solid #777;
+    padding: 16px;
+}
+
+.recipe-rating {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 10px 0;
+}
+
+#recipe-current-user-rating {
+    color: #777;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.recipes-comment {
+    border: 1px solid #ccc;
+    margin: 30px;
+    padding: 5px;
+}
+
+.comment-user {
+    margin-bottom: 20px;
+}
+
+.comment-text {
+    margin-left: 20px;
+}
+
+.comment-form {
+    /* margin-top: 20px;
+    padding: 20px; */
 }

@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="/css/common.css">
 
   <link rel="stylesheet" href="/css/pages/recipes/show.css">
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+    integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
 </head>
 <body>
   <%- include('../../partials/navbar.html.ejs', { context }); %>
@@ -27,10 +34,40 @@
     </p>
 
     <div class="recipe-bottom">
+      <div class="recipe-rating">
+        <div id="rater" data-initial-rating="<%= totalRating %>"></div>
+
+        <div id="recipe-current-user-rating" class="<%= !myRating && 'display-none' %>">
+          (Jūsų įvertinimas: <%= myRating %>)
+        </div>
+      </div>
       <!-- TODO: Count comments, rating, etc. -->
+    </div>
+
+    <div class="comment-form">
+      <input type="text" name="comment" required="">
+    </div>
+    
+    <div class="recipe-comments">
+      <!-- Comments -->
+      <% recipe.comments.forEach((comment) => { %>
+        <div class="recipes-comment">
+          <div class="comment-user">
+            <%= comment.user.firstName %>
+            <%= comment.user.lastName %>
+          </div>
+          <!-- <% console.log(comment.user) %> -->
+          <div class="comment-text">
+            <%= comment.text %>
+          </div>
+        </div>   
+    <% }) %>
     </div>
 
     <!-- TODO: Comments -->
   </div>
+
+  <script src="/packages/rater-js/index.js"></script>
+  <script src="/js/pages/recipes/show.js"></script>
 </body>
 </html>

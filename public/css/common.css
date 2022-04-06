@@ -23,3 +23,7 @@ div, p, h1 {
     font-weight: bold;
     text-align: center;
 }
+
+.display-none {
+    display: none;
+}
