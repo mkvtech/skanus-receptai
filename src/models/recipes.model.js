@@ -20,6 +20,10 @@ module.exports = function (app) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
       hooks: {

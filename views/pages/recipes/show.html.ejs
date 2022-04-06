@@ -44,6 +44,26 @@
       <!-- TODO: Count comments, rating, etc. -->
     </div>
 
+    <div class="comment-form">
+      <input type="text" name="comment" required="">
+    </div>
+    
+    <div class="recipe-comments">
+      <!-- Comments -->
+      <% recipe.comments.forEach((comment) => { %>
+        <div class="recipes-comment">
+          <div class="comment-user">
+            <%= comment.user.firstName %>
+            <%= comment.user.lastName %>
+          </div>
+          <!-- <% console.log(comment.user) %> -->
+          <div class="comment-text">
+            <%= comment.text %>
+          </div>
+        </div>   
+    <% }) %>
+    </div>
+
     <!-- TODO: Comments -->
   </div>
 

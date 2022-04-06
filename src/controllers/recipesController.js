@@ -21,9 +21,14 @@ class RecipesController extends BaseController {
       where: {
         id: req.params.id,
       },
+
       include: [
         this.models.users,
         this.models.recipe_ratings,
+        {
+          model: this.models.comments,
+          include: this.models.users,
+        },
       ],
     })
 
