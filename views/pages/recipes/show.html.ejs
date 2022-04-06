@@ -45,7 +45,11 @@
     </div>
 
     <div class="comment-form">
-      <input type="text" name="comment" required="">
+      <form action="/comments" method="post">
+        <input type="text" name="text" required="">
+        <input type="text" name="recipeId" required="" value="<%= recipe.id %>" hidden>
+        <button type="submit">Pridėti</button>
+      </form>
     </div>
     
     <div class="recipe-comments">

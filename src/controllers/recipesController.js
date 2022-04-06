@@ -30,6 +30,11 @@ class RecipesController extends BaseController {
           include: this.models.users,
         },
       ],
+      order: [
+        [
+          this.models.comments, "createdAt", "DESC"
+        ]
+      ]
     })
 
     if (recipe) {
