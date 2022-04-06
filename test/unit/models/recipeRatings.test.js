@@ -26,6 +26,7 @@ describe('recipeRatings', () => {
         description: 'Recipe Description',
         ingredients: 'organic raw materials',
         userId: recipeAuthor.id,
+        type: 'type',
       })
     })
 
