@@ -29,6 +29,7 @@ describe('recipesController', () => {
         })
 
         recipe = await app.get('models').recipes.create({
+          type: "Betboks",
           title: 'Sample Recipe',
           description: 'Recipe Description',
           ingredients: 'organic raw materials',
