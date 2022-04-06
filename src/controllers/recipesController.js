@@ -10,8 +10,16 @@ class RecipesController extends BaseController {
       include: this.models.users,
     })
 
+    var output = new Set();
+    recipes.forEach(item => {
+      output.add(item.type);
+    });
+
+    const types = output;
+
     res.render('pages/recipes/index.html.ejs', {
       recipes,
+      types,
       context: await this.viewContext(req),
     })
   }
@@ -31,6 +39,7 @@ class RecipesController extends BaseController {
       ],
     })
 
+    
     if (recipe) {
       res.render('pages/recipes/show.html.ejs', {
         recipe,
