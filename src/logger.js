@@ -6,8 +6,9 @@ const logger = createLogger({
 
   format: format.combine(
     format.errors({ stack: true }),
+    format.colorize(),
     format.timestamp(),
-    format.prettyPrint(),
+    format.simple(),
   ),
 
   transports: [new transports.Console()],
