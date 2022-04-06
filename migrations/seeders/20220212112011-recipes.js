@@ -10,6 +10,7 @@ module.exports = {
         title: 'First Recipe',
         description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
         ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
+        type: 'Cookies',
         userId: 1,
       },
       {
@@ -17,6 +18,7 @@ module.exports = {
         title: 'Second Recipe',
         description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
         ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
+        type: 'Desert',
         userId: 2,
       },
       {
@@ -24,6 +26,7 @@ module.exports = {
         title: 'Third Recipe',
         description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
         ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
+        type: 'Desert',
         userId: 2,
       },
       {
@@ -31,6 +34,7 @@ module.exports = {
         title: 'Fourth Recipe',
         description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
         ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
+        type: 'Desert',
         userId: 2,
       },
     ])
