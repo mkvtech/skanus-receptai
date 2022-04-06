@@ -1,5 +1,6 @@
 /*global document, $, axios */
-
+//import functions from '/public/recipeForTest'
+//const { createRecipeAddIgredients } = require('./recipeForTest')
 let jwt
 const recipesLinksContainer = $('#list-of-recipes')
 const rightSideContainer = $('#right-side-container')
@@ -122,6 +123,7 @@ const onRecipeFormAddIgredient = () => {
   const newData = document.createElement('div')
   newData.innerHTML = createRecipeAddIgredient()
   document.getElementById('add-igredient').appendChild(newData)
+  return newData
 
   //console.log(test)
 }
@@ -297,3 +299,18 @@ const recipeAddIgredient = createRecipeAddIgredient()
   recipes = await fetchRecipes()
   renderRecipesMenu(recipes)
 })()
+
+// const functions = {
+//   createRecipeAddIgredients: () => {
+//     return `
+//     <label for="recipe-form-ingredients">Ingredient: </label>
+//     <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+//     <label for="recipe-form-ingredients">Portion: </label>
+//     <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+//     <br />
+//     `
+//   },
+//   add: (num1, num2) => num1 + num2,
+// }
+// module.exports = functions
+

@@ -35,3 +35,16 @@
     margin: 20px 0;
     padding: 0 20px;
 }
+
+.recipe-small-right {
+    font-size: 20px;
+    margin-left: auto;
+    align-items: right;
+}
+
+.recipe-small-link-author {
+    font-size: 14px;
+    color: #777;
+    margin-left: auto;
+    text-decoration: none;
+}
