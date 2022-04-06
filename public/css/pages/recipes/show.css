@@ -23,3 +23,20 @@
 .recipe-bottom {
     border-bottom: 2px solid #777;
 }
+
+.recipes-comment {
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+}
+
+.comment-user {
+    background-color: rgb(235, 235, 235);
+    margin-bottom: 20px;
+}
+
+.comment-text {
+    margin-left: 20px;
+    background-color: lightgrey;
+}
