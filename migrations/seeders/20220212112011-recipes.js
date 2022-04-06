@@ -13,6 +13,13 @@ module.exports = {
         userId: 1,
       },
       {
+        id: 7,
+        title: 'Some Recipe',
+        description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
+        ingredients: '- Strawberries: 100g\n- Blueberries: 200g\n- Sugar: 40g',
+        userId: 1,
+      },
+      {
         id: 2,
         title: 'Second Recipe',
         description: '1. Do something\n2. Do something\n3. Do something\n4. Done',
