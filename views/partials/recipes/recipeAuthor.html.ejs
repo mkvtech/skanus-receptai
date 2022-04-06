@@ -1,0 +1,27 @@
+<!-- local variables: recipe -->
+
+<!-- local variables: recipe -->
+
+<div class="recipe-small-container">
+    <div class="recipe-small-header">
+      <div class="recipe-small-title">
+        <h2><%= recipe.title %></h2>
+      </div>
+
+      <div class="recipe-small-right">
+        <%= recipe.rating %> /5
+      </div>
+    </div>
+  
+    <div class="recipe-small-text">
+      <p>
+        <%= recipe.description.substring(0, 100) %>...
+      </p>
+
+      
+    </div>
+  
+    <div class="recipe-small-bottom">
+      <a class="recipe-small-link" href="<%= recipe.generatePageLink() %>">Skaityti daugiau</a>
+    </div>
+  </div>

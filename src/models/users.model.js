@@ -48,5 +48,9 @@ module.exports = function (app) {
     return `${this.firstName} ${this.lastName}`
   }
 
+  users.prototype.generateAuthorsPageLink = function() {
+    return `${app.get('utils').fullBaseUrl}/authorsrecipes/${this.id}`
+  }
+
   return users
 }

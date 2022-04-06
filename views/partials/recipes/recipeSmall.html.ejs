@@ -6,9 +6,11 @@
       <h2><%= recipe.title %></h2>
     </div>
 
-    <div class="recipe-small-author">
+    <div class="recipe-small-author" >
       <span>
+        <a class="recipe-small-link-author" href="<%= recipe.user.generateAuthorsPageLink() %>">
         <%= recipe.user.getFullName() %>
+        </a>
       </span>
     </div>
 

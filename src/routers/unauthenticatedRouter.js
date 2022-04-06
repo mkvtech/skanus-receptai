@@ -7,6 +7,7 @@ const setSessionAuthentication = require('../middleware/setSessionAuthentication
 const ApplicationController = require('../controllers/applicationController')
 const DebugController = require('../controllers/debugController')
 const RecipesController = require('../controllers/recipesController')
+const AuthorsRecipesController = require('../controllers/authorsRecipesController')
 
 module.exports = (app) => {
   const unauthenticatedRouter = express.Router()
@@ -27,5 +28,8 @@ module.exports = (app) => {
   unauthenticatedRouter.get('/recipes', middleware, recipesController.index)
   unauthenticatedRouter.get('/recipes/:id', middleware, recipesController.show)
 
+  const authorsRecipesController = new AuthorsRecipesController(app)
+  unauthenticatedRouter.get('/authorsrecipes/:id', middleware, authorsRecipesController.index)
+  
   return unauthenticatedRouter
 }
