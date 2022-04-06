@@ -13,8 +13,6 @@ class AuthorsRecipesController extends BaseController {
       include: this.models.users,
     })
 
-    console.log(recipes)
-
     const author = await this.models.users.findOne({
       where: {
         id: req.params.id,
@@ -26,25 +24,6 @@ class AuthorsRecipesController extends BaseController {
       author,
       context: await this.viewContext(req),
     })
-  }
-
-  show = async (req, res) => {
-    const recipe = await this.models.recipes.findOne({
-      where: {
-        id: req.params.id,
-      },
-      include: this.models.users
-    })
-
-    if (recipe) {
-      res.render('pages/authorsRicpes/index.html.ejs', {
-        recipe,
-        recipesUrl: `${this.utils.fullBaseUrl}/authorsrecipes`,
-        context: await this.viewContext(req),
-      })
-    } else {
-      res.sendStatus(404)
-    }
   }
 }
 
