@@ -8,10 +8,12 @@ class AuthorsRecipesController extends BaseController {
   index = async (req, res) => {
     const recipes = await this.models.recipes.findAll({
       where: {
-        id: req.params.id,
+        userId: req.params.id,
       },
       include: this.models.users,
     })
+
+    console.log(recipes)
 
     const author = await this.models.users.findOne({
       where: {
