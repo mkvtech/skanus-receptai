@@ -25,11 +25,6 @@ class AuthorsRecipesController extends BaseController {
       context: await this.viewContext(req),
     })
   }
-<<<<<<< HEAD
-=======
-
-  
->>>>>>> bda072e24778aa369c6991360b637bd91c162cb8
 }
 
 module.exports = AuthorsRecipesController
