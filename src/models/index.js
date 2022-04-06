@@ -6,6 +6,7 @@ const modelCreators = [
   require('./users.model.js'),
   require('./recipes.model.js'),
   require('./comments.model.js'),
+  require('./recipeRatings.model.js'),
 ]
 
 const defineModels = (app) => {
