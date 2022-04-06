@@ -2,12 +2,12 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-body {
+/* body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Roboto';
   background-color: #ffffff;
-}
+} */
 .display-none {
   display: none;
 }
@@ -22,7 +22,7 @@ body {
 .header {
   font-size: 35px;
 }
-.nav-container {
+/* .nav-container {
   display: flex;
   align-items: center;
   height: 47px;
@@ -36,7 +36,7 @@ body {
 }
 .nav-links a {
   padding: 4px 12px;
-}
+} */
 
 /* nav color change */
 a,
@@ -105,7 +105,7 @@ body {
 .header {
   font-size: 35px;
 }
-.nav-container {
+/* .nav-container {
   display: flex;
   align-items: center;
   height: 47px;
@@ -118,7 +118,7 @@ body {
 }
 .nav-links a {
   padding: 4px 12px;
-}
+} */
 .search-form-container {
   display: flex;
   align-items: center;
@@ -230,3 +230,4 @@ body {
   display: block;
 }
 /* This is a single-line comment */
+
