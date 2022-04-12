@@ -6,6 +6,7 @@ const setSessionAuthentication = require('../middleware/setSessionAuthentication
 const DebugController = require('../controllers/debugController')
 const RecipesController = require('../controllers/recipesController')
 const CommentsController = require('../controllers/commentsController')
+const UsersController = require('../controllers/usersController')
 
 module.exports = (app) => {
   const authenticatedRouter = express.Router()
@@ -23,6 +24,9 @@ module.exports = (app) => {
 
   const commentsController = new CommentsController(app)
   authenticatedRouter.post('/comments', middleware, commentsController.create)
+
+  const usersController = new UsersController(app)
+  authenticatedRouter.get('/users/:id', middleware, usersController.show)
   
   return authenticatedRouter
 }
