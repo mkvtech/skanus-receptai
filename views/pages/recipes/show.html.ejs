@@ -44,11 +44,15 @@
       <!-- TODO: Count comments, rating, etc. -->
     </div>
 
-    <div class="comment-form">
+
+    <div class="comment-form"> 
       <form action="/comments" method="post">
+        <p>Komentuoti</p>
         <input type="text" name="text" required="">
         <input type="text" name="recipeId" required="" value="<%= recipe.id %>" hidden>
-        <button type="submit">Pridėti</button>
+        <div class="add-button">
+          <button type="submit">Pridėti</button>
+        </div>
       </form>
     </div>
     
