@@ -44,21 +44,50 @@
     margin-top: 8px;
 }
 
+/* Comment form */
+.comment-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.comment-form input{
+    width: 500px;
+    padding-bottom: 70px;
+}
+
+.comment-form button {
+    margin-left: 454px;
+    margin-top: 8px;
+}
+
+.comment-form p{
+    margin-top: 30px;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+/* Comments */
+.recipe-comments{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
 .recipes-comment {
     border: 1px solid #ccc;
-    margin: 30px;
-    padding: 5px;
+    border-radius: 8px;
+    width: 650px;
+    margin: 5px;
 }
 
 .comment-user {
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .comment-text {
     margin-left: 20px;
-}
-
-.comment-form {
-    margin-top: 20px;
-    padding: 20px;
 }
