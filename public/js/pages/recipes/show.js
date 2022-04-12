@@ -1,5 +1,6 @@
-let jwt
-let recipeRater
+/* global document, axios, raterJs */
+
+let jwt, recipeRater, recipeId
 
 const fetchJwt = async () => {
   return (await axios.get('/jwt')).data
@@ -7,7 +8,7 @@ const fetchJwt = async () => {
 
 const sendMyRating = (newRatingValue) => {
   return axios.post(
-    '/recipes/2/rate',
+    `/recipes/${recipeId}/rate`,
     {
       rating: newRatingValue,
     },
@@ -38,18 +39,25 @@ const setCurrentUserRating = (newRatingValue) => {
   currentUserRating.classList.remove('display-none')
 }
 
-;(() => {
+;(async () => {
+  let isAuthenticated = false
+
+  try {
+    jwt = await fetchJwt()
+    isAuthenticated = true
+  } catch (error) {
+    console.log('Not authenticated')
+  }
+
   const recipeRaterDiv = document.querySelector('#rater')
+  recipeId = parseInt(recipeRaterDiv.dataset.recipeId)
 
   recipeRater = raterJs({
     element: recipeRaterDiv,
     rateCallback: handleRatingClick,
+    readOnly: !isAuthenticated,
   })
 
   const initialRating = parseFloat(recipeRaterDiv.dataset.initialRating)
   recipeRater.setRating(initialRating)
-})()
-
-;(async () => {
-  jwt = await fetchJwt()
 })()

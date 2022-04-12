@@ -35,17 +35,22 @@
 
     <div class="recipe-bottom">
       <div class="recipe-rating">
-        <div id="rater" data-initial-rating="<%= totalRating %>"></div>
+        <div
+          id="rater"
+          data-initial-rating="<%= totalRating %>"
+          data-read-only="<%= !!context.currentUser %>"
+          data-recipe-id="<%= recipe.id %>"
+        >
+        </div>
 
         <div id="recipe-current-user-rating" class="<%= !myRating && 'display-none' %>">
           (Jūsų įvertinimas: <%= myRating %>)
         </div>
       </div>
-      <!-- TODO: Count comments, rating, etc. -->
     </div>
 
 
-    <div class="comment-form"> 
+    <div class="comment-form">
       <form action="/comments" method="post">
         <p>Komentuoti</p>
         <input type="text" name="text" required="">
@@ -55,7 +60,7 @@
         </div>
       </form>
     </div>
-    
+
     <div class="recipe-comments">
       <!-- Comments -->
       <% recipe.comments.forEach((comment) => { %>
@@ -68,11 +73,9 @@
           <div class="comment-text">
             <%= comment.text %>
           </div>
-        </div>   
+        </div>
     <% }) %>
     </div>
-
-    <!-- TODO: Comments -->
   </div>
 
   <script src="/packages/rater-js/index.js"></script>
