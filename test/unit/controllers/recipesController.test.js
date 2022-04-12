@@ -46,7 +46,7 @@ describe('recipesController', () => {
       describe("comments", () => {
         
         it("renders comments", async () => {
-          const comment = await app.get('models').comments.create({
+          const comment = await app.get('Pmodels').comments.create({
             userId: author.id,
             text: 'Kazkoks tekstas',
             recipeId: recipe.id,
