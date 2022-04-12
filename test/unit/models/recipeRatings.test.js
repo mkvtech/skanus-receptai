@@ -90,8 +90,8 @@ describe('recipeRatings', () => {
       })
 
       describe('when user has already rated the recipe', () => {
-        beforeEach(() => {
-          recipe_ratings.create({
+        beforeEach(async () => {
+          await recipe_ratings.create({
             userId: user.id,
             recipeId: recipe.id,
             rating: 4,
@@ -108,7 +108,7 @@ describe('recipeRatings', () => {
 
     describe('with valid data', () => {
       it('saves recipeRating object', async () => {
-        recipe_ratings.create({
+        await recipe_ratings.create({
           userId: user.id,
           recipeId: recipe.id,
           rating: 5,
