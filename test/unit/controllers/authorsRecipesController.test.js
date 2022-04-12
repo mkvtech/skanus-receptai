@@ -1,9 +1,6 @@
 const supertest = require('supertest')
-const { when } = require('jest-when')
 
 const app = require('../../../src/app')
-
-const AuthorsRecipesController = require('../../../src/controllers/authorsRecipesController')
 
 describe('authorsRecipesController', () => {
   describe('show', () => {
@@ -31,6 +28,7 @@ describe('authorsRecipesController', () => {
           description: 'Recipe Description',
           ingredients: 'organic raw materials',
           userId: author.id,
+          type: 'sample',
         })
 
         const response = await request.get(`/authorsrecipes/${author.id}`)

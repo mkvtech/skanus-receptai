@@ -3,8 +3,6 @@ const { when } = require('jest-when')
 
 const app = require('../../../src/app')
 
-const RecipesController = require('../../../src/controllers/recipesController')
-
 describe('recipesController', () => {
   describe('show', () => {
     const request = supertest(app)
@@ -29,7 +27,7 @@ describe('recipesController', () => {
         })
 
         recipe = await app.get('models').recipes.create({
-          type: "Betboks",
+          type: 'Betboks',
           title: 'Sample Recipe',
           description: 'Recipe Description',
           ingredients: 'organic raw materials',
@@ -42,21 +40,21 @@ describe('recipesController', () => {
 
         expect(response.status).toBe(200)
       })
-      
-      describe("comments", () => {
-        
-        it("renders comments", async () => {
-          const comment = await app.get('Pmodels').comments.create({
+
+      describe('comments', () => {
+
+        it('renders comments', async () => {
+          await app.get('models').comments.create({
             userId: author.id,
             text: 'Kazkoks tekstas',
             recipeId: recipe.id,
             rating: 1,
           })
-        const response = await request.get(`/recipes/${recipe.id}`)
 
-        expect(response.status).toBe(200)
+          const response = await request.get(`/recipes/${recipe.id}`)
 
-        expect(response.text).toMatch(/Kazkoks tekstas/)
+          expect(response.status).toBe(200)
+          expect(response.text).toMatch(/Kazkoks tekstas/)
         })
       })
     })
