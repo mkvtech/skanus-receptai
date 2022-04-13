@@ -4,15 +4,10 @@ Savybė: Receptų įvertinimas
   
   Scenarijus: 
     Duota vartotojas yra neprisijungęs
-    Kai bando įvertinti receptą
+    Kai įvertina receptą 1 žvaigždute
     Tada sistema neleidžia įvertinti recepto
     
   Scenarijus:
     Duota vartotojas yra prisijungęs
-    Kai įvertina kito vartotojo receptą
-    Tada rodomas naujas recepto visų vartotojų įvertinimas ir rodomas prisijungusio vartotojo įvertinimas
-  
-  Scenarijus:
-    Duota vartotojas yra prisijungtas
-    Kai įvertina savo receptą
-    Tada sistema neleidžia įvertinti savo recepto
+    Kai įvertina kito vartotojo receptą 1 žvaigždute
+    Tada rodomas naujas bendras įvertinimas ir rodomas prisijungusio vartotojo įvertinimas
