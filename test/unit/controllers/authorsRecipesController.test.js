@@ -14,6 +14,21 @@ describe('authorsRecipesController', () => {
       })
     })
 
+    describe('without recipes', () => {
+      it('renders authros recipes', async () => {
+        const author = await app.get('models').users.create({
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'john-doe@example.com',
+          password: 'password',
+        })
+
+        const response = await request.get(`/authorsrecipes/${author.id}`)
+
+        expect(response.status).toBe(200)
+      })
+    })
+
     describe('with some authors recipes', () => {
       it('renders authros recipes', async () => {
         const author = await app.get('models').users.create({
