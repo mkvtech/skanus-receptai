@@ -11,4 +11,4 @@ Scenarijus:
 Duota Vartotojas yra prisijungęs
 Kai Atsidaro vartotoja kuris neturi receptu
 Tada Vartotojas mato kūrėjo vardą
-Ir Vartotojas mato "Sis vartotojas neturi receptu"
+Ir Vartotojas mato prenesima "Sis vartotojas neturi receptu"
