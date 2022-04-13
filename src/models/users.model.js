@@ -41,10 +41,15 @@ module.exports = function (app) {
   users.associate = function (models) {
     users.hasMany(models.recipes, { foreignKey: { allowNull: false } })
     users.hasMany(models.comments, { foreignKey: { allowNull: false } })
+    users.hasMany(models.recipe_ratings, { foreignKey: { allowNull: false } })
   }
 
   users.prototype.getFullName = function() {
     return `${this.firstName} ${this.lastName}`
+  }
+
+  users.prototype.generateAuthorsPageLink = function() {
+    return `${app.get('utils').fullBaseUrl}/authorsrecipes/${this.id}`
   }
 
   return users

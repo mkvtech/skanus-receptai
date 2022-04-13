@@ -4,23 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Pagrindinis</title>
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/common.css">
+
+  <link rel="stylesheet" href="/css/partials/recipes/recipeSmall.css">
 </head>
 <body>
   <%- include('../../partials/navbar.html.ejs', { context }); %>
 
-  <h1>Receptai</h1>
+  <div class="main-container">
+    <header class="page-header">
+      <h1 class="page-title">Receptai</h1>
+    </header>
 
-  <% recipes.forEach((recipe) => { %>
-    <div class="recipe-small-container">
-      <h2><%= recipe.title %></h2>
+    <div>
+      <% types.forEach((type) => { %>
+        <%- include('../../partials/recipes/recipeType.html.ejs', { type }) %>
+      <% }) %>
+      </div>
 
-      <p>
-        <%= recipe.description.substring(0, 100) %>...
-
-        <a href="<%= recipe.generatePageLink() %>">Skaityti daugiau</a>
-      </p>
-    </div>
-  <% }) %>
+    <% recipes.forEach((recipe) => { %>
+      <%- include('../../partials/recipes/recipeSmall.html.ejs', { recipe }) %>
+    <% }) %>
+  </div>
 </body>
 </html>

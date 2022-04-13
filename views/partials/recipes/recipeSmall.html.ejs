@@ -1,0 +1,33 @@
+<!-- local variables: recipe -->
+
+<div class="recipe-small-container">
+  <div class="recipe-small-header">
+    <div class="recipe-small-title">
+      <h2><%= recipe.title %></h2>
+    </div>
+
+    <div class="recipe-small-author" >
+      <span>
+        <a class="recipe-small-link-author" href="<%= recipe.user.generateAuthorsPageLink() %>">
+        <%= recipe.user.getFullName() %>
+        </a>
+      </span>
+    </div>
+
+    <div class="recipe-small-date">
+      <span>
+        <%= recipe.createdAt.toLocaleDateString('lt-LT') %> <%= recipe.createdAt.getHours() %>:<%= recipe.createdAt.getMinutes() %>
+      </span>
+    </div>
+  </div>
+
+  <div class="recipe-small-text">
+    <p>
+      <%= recipe.description.substring(0, 100) %>...
+    </p>
+  </div>
+
+  <div class="recipe-small-bottom">
+    <a class="recipe-small-link" href="<%= recipe.generatePageLink() %>">Skaityti daugiau</a>
+  </div>
+</div>

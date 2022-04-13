@@ -1,65 +1,39 @@
 <section class="nav-container">
-  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="/css/partials/navbar.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 
   <nav class="nav-links">
-    <a
-      class="nav-link"
-      href="<%= `${context.controller.utils.fullBaseUrl}/recipes` %>"
-    >
-      <span>
-        Visi receptai
-      </span>
+    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/recipes` %>">
+      <span> Visi receptai </span>
     </a>
 
-    <a
-      class="nav-link"
-      href="<%= `${context.controller.utils.fullBaseUrl}/authorRecipes` %>"
-    >
-      <span>
-        Mano receptai
-      </span>
+    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/authorRecipes` %>">
+      <span> Mano receptai </span>
     </a>
 
-    <a
-      class="nav-link"
-      href="<%= `${context.controller.utils.fullBaseUrl}/recipes/new` %>"
-    >
-      <span>
-        Naujas receptas
-      </span>
+    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/newRecipe` %>">
+      <span> Naujas receptas </span>
     </a>
 
     <% if (context.currentUser) { %>
-      <a
-        class="nav-right nav-link"
-        href="<%= `${context.controller.utils.fullBaseUrl}/users/${context.currentUser.id}` %>"
-      >
-        <span>
-          <%= context.currentUser.getFullName() %>
-        </span>
-      </a>
+    <a
+      class="nav-right nav-link"
+      href="<%= `${context.controller.utils.fullBaseUrl}/users/${context.currentUser.id}` %>"
+    >
+      <span> <%= context.currentUser.getFullName() %> </span>
+    </a>
 
-      <a
-        class="nav-link"
-        href="<%= `${context.controller.utils.fullBaseUrl}/logout` %>"
-      >
-        <span>
-          Atsijungti
-        </span>
-      </a>
+    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/logout` %>">
+      <span> Atsijungti </span>
+    </a>
     <% } else { %>
-      <a
-        class="nav-right nav-link"
-        href="<%= `${context.controller.utils.fullBaseUrl}/login` %>"
-      >
-        <span>
-          Prisijungti
-        </span>
-      </a>
+    <a class="nav-right nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/login` %>">
+      <span> Prisijungti </span>
+    </a>
     <% } %>
   </nav>
 </section>
+

@@ -1,0 +1,29 @@
+body {
+    background-color: #e0e0e0;
+}
+
+div, p, h1 {
+    font-family: 'Roboto'
+}
+
+.main-container {
+    margin: auto;
+    max-width: 960px;
+    min-height: calc(100vh - 60px); /* navbar height */
+
+    background-color: #fff;
+}
+
+.page-header {
+    padding: 60px 0;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.display-none {
+    display: none;
+}
