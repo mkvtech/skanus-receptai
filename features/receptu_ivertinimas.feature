@@ -10,4 +10,5 @@ Savybė: Receptų įvertinimas
   Scenarijus:
     Duota vartotojas yra prisijungęs
     Kai įvertina kito vartotojo receptą 1 žvaigždute
-    Tada rodomas naujas bendras įvertinimas ir rodomas prisijungusio vartotojo įvertinimas
+    Tada rodomas naujas bendras įvertinimas
+    Ir rodomas prisijungusio vartotojo įvertinimas "Jūsų įvertinimas: 1"
