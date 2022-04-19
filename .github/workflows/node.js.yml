@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Check out repository
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
     
     - name: Use Node.js 14
       uses: actions/setup-node@v3
@@ -23,16 +23,16 @@ jobs:
         cache: 'npm'
         
     - name: Clean install dependencies and build
-    - run: npm ci
+      run: npm ci
     
     - name: Run tests
-    - run: npm test
+      run: npm test
 
   build:
     runs-on: windows-latest
     steps:
     - name: Check out repository
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
     
     - name: Use Node.js 14
       uses: actions/setup-node@v3
@@ -41,7 +41,7 @@ jobs:
         cache: 'npm'
     
     - name: Clean install dependencies and build
-    - run: npm ci
+      run: npm ci
     
     - name: Build database
-    - run: npm run db:sync
+      run: npm run db:sync
