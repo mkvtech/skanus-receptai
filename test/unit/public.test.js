@@ -1,3 +1,4 @@
+const { JSDOM } = require('jsdom')
 const functions = require('../../public/recipeForTest')
 
 test('Adds two numbers 2+2', () => {
@@ -16,7 +17,8 @@ test('createRecipeAddIgredients funciton returns', () => {
  * @jest-environment jsdom
  */
 test('use jsdom in this test file', () => {
-  const element = document.createElement('div')
+  const dom = new JSDOM()
+  const element = dom.window.document.createElement('div')
   expect(element).not.toBeNull()
 })
 

@@ -24,46 +24,12 @@
 
   <div class="main-container">
     <header class="page-header">
-      <h1 class="page-title"><%= recipe.title %></h1>
-
-      <p class="recipe-author"><%= recipe.user.getFullName() %></p>
+      <h1 class="page-title"><%= context.currentUser.getFullName() %></h1>
     </header>
-
-    <p class="recipe-description">
-      <%= recipe.description %>
-    </p>
-
-    <div class="recipe-bottom">
-      <div class="recipe-rating">
-        <div
-          id="rater"
-          data-initial-rating="<%= totalRating %>"
-          data-read-only="<%= !!context.currentUser %>"
-          data-recipe-id="<%= recipe.id %>"
-        >
-        </div>
-
-        <div id="recipe-current-user-rating" class="<%= !myRating && 'display-none' %>">
-          (Jūsų įvertinimas: <%= myRating %>)
-        </div>
-      </div>
-    </div>
-
-
-    <div class="comment-form">
-      <form action="/comments" method="post">
-        <p>Komentuoti</p>
-        <input type="text" name="text" required="">
-        <input type="text" name="recipeId" required="" value="<%= recipe.id %>" hidden>
-        <div class="add-button">
-          <button type="submit">Pridėti</button>
-        </div>
-      </form>
-    </div>
 
     <div class="recipe-comments">
       <!-- Comments -->
-      <% recipe.comments.forEach((comment) => { %>
+      <% comments.forEach((comment) => { %>
         <div class="recipes-comment">
           <div class="comment-user">
             <%= comment.user.firstName %>
@@ -73,12 +39,11 @@
           <div class="comment-text">
             <%= comment.text %>
           </div>
-        </div>
+        </div>   
     <% }) %>
     </div>
-  </div>
 
-  <script src="/packages/rater-js/index.js"></script>
-  <script src="/js/pages/recipes/show.js"></script>
+    <!-- TODO: Comments -->
+  </div>
 </body>
 </html>

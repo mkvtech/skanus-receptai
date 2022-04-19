@@ -23,6 +23,10 @@
     <% recipes.forEach((recipe) => { %>
       <%- include('../../partials/recipes/recipeAuthor.html.ejs', { recipe }) %>
     <% }) %>
+
+    <%if (recipes.length <= 0) { %>
+      <h1>Sis vartotojas neturi receptu</h1>
+      <% } %>
   </div>
 </body>
 </html>

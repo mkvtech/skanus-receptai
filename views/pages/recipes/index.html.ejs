@@ -20,6 +20,12 @@
       <h1 class="page-title">Receptai</h1>
     </header>
 
+    <div>
+      <% types.forEach((type) => { %>
+        <%- include('../../partials/recipes/recipeType.html.ejs', { type }) %>
+      <% }) %>
+      </div>
+
     <% recipes.forEach((recipe) => { %>
       <%- include('../../partials/recipes/recipeSmall.html.ejs', { recipe }) %>
     <% }) %>

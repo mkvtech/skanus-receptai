@@ -29,7 +29,7 @@
     "db:sync": "node ./migrations/sync.js",
     "prettier": "npx prettier --check src/. test/. public/.",
     "lint": "eslint src/. test/. --config .eslintrc.json",
-    "test": "npm run lint && npm run prettier && npm run jest",
+    "test": "npm run test:unit",
     "test:unit": "npx jest --config ./test/unit/jest.config.js -- ./test/unit/*"
   },
   "standard": {
@@ -74,4 +74,3 @@
     "supertest": "^6.2.2"
   }
 }
-
