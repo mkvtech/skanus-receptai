@@ -179,10 +179,22 @@ const fillComments = async (comments) => {
 
 // eslint-disable-next-line no-unused-vars
 const onRecipeFormSubmit = async () => {
+  console.log('Submit has been pressed')
   const $recipeTitle = $('#recipe-form-title')
   const $recipeIngredients = $('#recipe-form-ingredients')
   const $recipeDescription = $('#recipe-form-description')
-
+  if ($recipeTitle.val() == '') {
+    alert('No tittle')
+    return
+  }
+  if ($recipeIngredients.val() == '') {
+    alert('No igredient')
+    return
+  }
+  if ($recipeDescription.val() == '') {
+    alert('No description')
+    return
+  }
   // front-end validation here
 
   const data = {
@@ -217,7 +229,7 @@ const createRecipeForm = () => {
 
 <div id="add-igredient">
     <label for="recipe-form-ingredients">Ingredient: </label>
-    <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+    <input type="text" name="ingredients" Id="recipe-form-ingredients" required />
     <label for="recipe-form-ingredients">Portion: </label>
     <input type="text" name="ingredients" class="recipe-form-ingredients" required />
     <br />
@@ -249,7 +261,7 @@ const createRecipeAddIgredient = () => {
   return `
 
   <label for="recipe-form-ingredients">Ingredient: </label>
-  <input type="text" name="ingredients" class="recipe-form-ingredients" required />
+  <input type="text" name="ingredients" Id="recipe-form-ingredients" required />
   <label for="recipe-form-ingredients">Portion: </label>
   <input type="text" name="ingredients" class="recipe-form-ingredients" required />
   <br />

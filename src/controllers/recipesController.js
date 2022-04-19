@@ -1,4 +1,4 @@
-const BaseController = require("./baseController")
+const BaseController = require('./baseController')
 
 class RecipesController extends BaseController {
   constructor(app) {
@@ -21,7 +21,7 @@ class RecipesController extends BaseController {
       where: {
         id: req.params.id,
       },
-      include: this.models.users
+      include: this.models.users,
     })
 
     if (recipe) {
@@ -37,3 +37,4 @@ class RecipesController extends BaseController {
 }
 
 module.exports = RecipesController
+
