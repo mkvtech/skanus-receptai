@@ -44,7 +44,6 @@ describe('recipesController', () => {
       })
 
       describe('comments', () => {
-
         it('renders comments', async () => {
           await app.get('models').comments.create({
             userId: author.id,
@@ -88,10 +87,7 @@ describe('recipesController', () => {
       })
 
       it('returns 401', async () => {
-        await request
-          .post(`/recipes/${recipe.id}/rate`)
-          .send({ rating: sentRating })
-          .expect(401)
+        await request.post(`/recipes/${recipe.id}/rate`).send({ rating: sentRating }).expect(401)
       })
     })
 
@@ -109,17 +105,12 @@ describe('recipesController', () => {
           password: await encryptPassword(password),
         })
 
-        await agent
-          .post('/login')
-          .send({ email: currentUser.email, password })
+        await agent.post('/login').send({ email: currentUser.email, password })
       })
 
       describe('when rating non-existing recipe', () => {
         it('returns 404', async () => {
-          await agent
-            .post('/recipes/1/rate')
-            .send({ rating: sentRating })
-            .expect(404)
+          await agent.post('/recipes/1/rate').send({ rating: sentRating }).expect(404)
         })
       })
 
@@ -145,16 +136,13 @@ describe('recipesController', () => {
 
         describe('when recipe was not rated before', () => {
           it('creates new recipeRating object', async () => {
-            await agent
-              .post(`/recipes/${recipe.id}/rate`)
-              .send({ rating: sentRating })
-              .expect(200)
+            await agent.post(`/recipes/${recipe.id}/rate`).send({ rating: sentRating }).expect(200)
 
             const recipeRating = await app.get('models').recipe_ratings.findOne({
               where: {
                 userId: currentUser.id,
                 recipeId: recipe.id,
-              }
+              },
             })
 
             expect(recipeRating.rating).toEqual(sentRating)
@@ -173,10 +161,7 @@ describe('recipesController', () => {
           })
 
           it('updates recipeRating object', async () => {
-            await agent
-              .post(`/recipes/${recipe.id}/rate`)
-              .send({ rating: sentRating })
-              .expect(200)
+            await agent.post(`/recipes/${recipe.id}/rate`).send({ rating: sentRating }).expect(200)
 
             await recipeRating.reload()
 

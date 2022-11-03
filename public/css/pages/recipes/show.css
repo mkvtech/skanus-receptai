@@ -8,8 +8,9 @@
     display: flex;
     flex-direction: row;
 }
-.recipe-author:before, .recipe-author:after{
-    content: "";
+.recipe-author:before,
+.recipe-author:after {
+    content: '';
     flex: 1 1;
     border-bottom: 1px solid #ccc;
     margin: auto 20px;
@@ -51,7 +52,7 @@
     flex-direction: column;
 }
 
-.comment-form input{
+.comment-form input {
     width: 500px;
     padding-bottom: 70px;
 }
@@ -61,14 +62,14 @@
     margin-top: 8px;
 }
 
-.comment-form p{
+.comment-form p {
     margin-top: 30px;
     margin-bottom: 2px;
     font-weight: bold;
 }
 
 /* Comments */
-.recipe-comments{
+.recipe-comments {
     display: flex;
     align-items: center;
     flex-direction: column;

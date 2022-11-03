@@ -18,12 +18,8 @@ describe('session_authentication', () => {
         password: 'password',
       }
 
-      it ('registers new user', async () => {
-        await agent
-          .post('/signup')
-          .send(requestBody)
-          .expect(302)
-          .expect('Location', '/recipes')
+      it('registers new user', async () => {
+        await agent.post('/signup').send(requestBody).expect(302).expect('Location', '/recipes')
 
         const createdUser = app.get('models').users.findOne({
           where: {
@@ -57,11 +53,7 @@ describe('session_authentication', () => {
         }
 
         it('is successful', async () => {
-          await agent
-            .post('/login')
-            .send(requestBody)
-            .expect(302)
-            .expect('Location', '/recipes')
+          await agent.post('/login').send(requestBody).expect(302).expect('Location', '/recipes')
         })
       })
 
@@ -72,36 +64,25 @@ describe('session_authentication', () => {
         }
 
         it('is unsuccessful', async () => {
-          await agent
-            .post('/login')
-            .send(requestBody)
-            .expect(401)
+          await agent.post('/login').send(requestBody).expect(401)
         })
       })
     })
 
     describe('when user is logged in', () => {
       beforeEach(async () => {
-        await agent
-          .post('/login')
-          .send({ email, password })
-          .expect(302)
-          .expect('Location', '/recipes')
+        await agent.post('/login').send({ email, password }).expect(302).expect('Location', '/recipes')
       })
 
       describe('GET /jwt', () => {
         it('is successful', async () => {
-          await agent
-            .get('/jwt')
-            .expect(200)
+          await agent.get('/jwt').expect(200)
         })
       })
 
       describe('GET /currentUser', () => {
         it('returns currently authenticated user data', async () => {
-          const response = await agent
-            .get('/currentUser')
-            .expect(200)
+          const response = await agent.get('/currentUser').expect(200)
 
           expect(response.body.currentUser).toMatchObject({
             email,
@@ -113,15 +94,11 @@ describe('session_authentication', () => {
 
       describe('GET /logout', () => {
         it('disconnects user from the system', async () => {
-          const response = await agent
-            .get('/logout')
-            .expect(200)
+          const response = await agent.get('/logout').expect(200)
 
           expect(response.text).toBe('You are now logged out')
 
-          await agent
-            .get('/currentUser')
-            .expect(401)
+          await agent.get('/currentUser').expect(401)
         })
       })
     })

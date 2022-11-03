@@ -14,22 +14,21 @@ const sendMyRating = (newRatingValue) => {
     },
     {
       headers: {
-        Authorization: `Bearer ${jwt}`
+        Authorization: `Bearer ${jwt}`,
       },
     }
   )
 }
 
 const handleRatingClick = (newRatingValue, done) => {
-  sendMyRating(newRatingValue)
-    .then((response) => {
-      const newTotalRating = parseFloat(response.data.newRating)
+  sendMyRating(newRatingValue).then((response) => {
+    const newTotalRating = parseFloat(response.data.newRating)
 
-      recipeRater.setRating(newTotalRating)
-      setCurrentUserRating(newRatingValue)
+    recipeRater.setRating(newTotalRating)
+    setCurrentUserRating(newRatingValue)
 
-      done()
-    })
+    done()
+  })
 }
 
 const setCurrentUserRating = (newRatingValue) => {

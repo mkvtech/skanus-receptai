@@ -2,8 +2,10 @@ body {
     background-color: #e0e0e0;
 }
 
-div, p, h1 {
-    font-family: 'Roboto'
+div,
+p,
+h1 {
+    font-family: 'Roboto';
 }
 
 .main-container {

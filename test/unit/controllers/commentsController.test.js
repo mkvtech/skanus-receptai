@@ -30,14 +30,13 @@ describe('commentsController', () => {
       it('creates comment', async () => {
         await agent
           .post('/login')
-          .send({ email:'john-doe@example.com', password: 'password' })
+          .send({ email: 'john-doe@example.com', password: 'password' })
           .expect(302)
           .expect('Location', '/recipes')
-        const requestBody = { text: 'text', 'recipeId': recipe.id }
-        await agent.post('/comments').send(requestBody)
-          .expect(302)
+        const requestBody = { text: 'text', recipeId: recipe.id }
+        await agent.post('/comments').send(requestBody).expect(302)
 
-        const comment = await  app.get('models').comments.findOne({
+        const comment = await app.get('models').comments.findOne({
           where: {
             userId: author.id,
             recipeId: recipe.id,
@@ -46,6 +45,5 @@ describe('commentsController', () => {
         expect(comment).toBeTruthy()
       })
     })
-    
   })
 })

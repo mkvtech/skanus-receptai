@@ -27,10 +27,12 @@
     "dev": "nodemon src/",
     "start": "node src/",
     "db:sync": "node ./migrations/sync.js",
+    "autofix": "npm run lint:fix && npm run prettier:fix",
     "prettier": "npx prettier --check src/. test/. public/.",
+    "prettier:fix": "npx prettier --write src/. test/. public/.",
     "lint": "eslint src/. test/. --config .eslintrc.json",
     "lint:fix": "eslint src/. test/. --config .eslintrc.json --fix",
-    "test": "npm run test:unit",
+    "test": "npm run lint && npm run prettier && npm run test:unit",
     "test:unit": "npx jest --config ./test/unit/jest.config.js -- ./test/unit/*"
   },
   "standard": {

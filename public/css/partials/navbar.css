@@ -23,10 +23,10 @@
 .nav-link:visited,
 .nav-link:hover,
 .nav-link:active {
-  color: #135dec;
-  text-decoration: none;
+    color: #135dec;
+    text-decoration: none;
 }
 
 .nav-link:hover {
-  color: #ff6161c9;
+    color: #ff6161c9;
 }
