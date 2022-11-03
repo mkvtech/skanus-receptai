@@ -9,7 +9,7 @@ test('createRecipeAddIgredients funciton exists', () => {
 })
 test('createRecipeAddIgredients funciton returns', () => {
   expect(functions.createRecipeAddIgredients()).toMatch(
-    `<label for="recipe-form-ingredients">Ingredient: </label> <input type="text" name="ingredients" class="recipe-form-ingredients" required /> <label for="recipe-form-ingredients">Portion: </label> <input type="text" name="ingredients" class="recipe-form-ingredients" required /> <br />`
+    '<label for="recipe-form-ingredients">Ingredient: </label> <input type="text" name="ingredients" class="recipe-form-ingredients" required /> <label for="recipe-form-ingredients">Portion: </label> <input type="text" name="ingredients" class="recipe-form-ingredients" required /> <br />'
   )
 })
 

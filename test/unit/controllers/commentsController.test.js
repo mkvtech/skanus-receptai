@@ -19,7 +19,7 @@ describe('commentsController', () => {
         })
 
         recipe = await app.get('models').recipes.create({
-          type: "Betboks",
+          type: 'Betboks',
           title: 'Sample Recipe',
           description: 'Recipe Description',
           ingredients: 'organic raw materials',
@@ -34,8 +34,8 @@ describe('commentsController', () => {
           .expect(302)
           .expect('Location', '/recipes')
         const requestBody = { text: 'text', 'recipeId': recipe.id }
-        await agent.post(`/comments`).send(requestBody)
-        .expect(302)
+        await agent.post('/comments').send(requestBody)
+          .expect(302)
 
         const comment = await  app.get('models').comments.findOne({
           where: {

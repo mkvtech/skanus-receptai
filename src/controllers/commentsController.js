@@ -1,4 +1,4 @@
-const BaseController = require("./baseController")
+const BaseController = require('./baseController')
 
 class CommentsController extends BaseController {
   constructor(app) {
@@ -12,7 +12,7 @@ class CommentsController extends BaseController {
       text: req.body.text,
       rating: 0,
     })
-    res.redirect("recipes/" + req.body.recipeId)
+    res.redirect('recipes/' + req.body.recipeId)
   }
 }
 
