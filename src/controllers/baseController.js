@@ -5,7 +5,7 @@ class BaseController {
     this.utils = this.app.get('utils')
   }
 
-  viewContext = async function(request) {
+  async viewContext(request) {
     return {
       app: this.app,
       controller: this,

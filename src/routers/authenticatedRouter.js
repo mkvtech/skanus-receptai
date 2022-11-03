@@ -16,17 +16,17 @@ module.exports = (app) => {
     authenticate('jwt'),
   ]
 
-  const debugController = new DebugController(app)
-  authenticatedRouter.get('/debug_protected', middleware, debugController.index)
+  const route = (controllerClass, action) => {
+    return async (req, res) => {
+      const controllerInstance = new controllerClass(app)
 
-  const recipesController = new RecipesController(app)
-  authenticatedRouter.post('/recipes/:id/rate', middleware, recipesController.rate)
+      return controllerInstance[action](req, res)
+    }
+  }
+  authenticatedRouter.get('/debug_protected', middleware, route(DebugController, 'index'))
+  authenticatedRouter.post('/recipes/:id/rate', middleware, route(RecipesController, 'rate'))
+  authenticatedRouter.post('/comments', middleware, route(CommentsController, 'create'))
+  authenticatedRouter.get('/users/:id', middleware, route(UsersController, 'show'))
 
-  const commentsController = new CommentsController(app)
-  authenticatedRouter.post('/comments', middleware, commentsController.create)
-
-  const usersController = new UsersController(app)
-  authenticatedRouter.get('/users/:id', middleware, usersController.show)
-  
   return authenticatedRouter
 }

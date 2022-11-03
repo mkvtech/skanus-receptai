@@ -15,22 +15,20 @@ module.exports = (app) => {
 
   const middleware = [setSessionAuthentication(), allowAnonymous(), authenticate('jwt', 'anonymous')]
 
-  const debugController = new DebugController(app)
-  unauthenticatedRouter.get('/debug', middleware, debugController.index)
+  const route = (controllerClass, action) => {
+    return async (req, res) => {
+      const controllerInstance = new controllerClass(app)
 
-  const applicationController = new ApplicationController(app)
-  unauthenticatedRouter.get('/', middleware, applicationController.index)
+      return controllerInstance[action](req, res)
+    }
+  }
 
-  const recipesController = new RecipesController(app)
-  unauthenticatedRouter.get('/recipes', middleware, recipesController.index)
-  unauthenticatedRouter.get('/recipes/:id', middleware, recipesController.show)
-
-  const authorsRecipesController = new AuthorsRecipesController(app)
-  unauthenticatedRouter.get('/authorsrecipes/:id', middleware, authorsRecipesController.index)
-
-  const newRecipeController = new NewRecipeController(app)
-  unauthenticatedRouter.get('/newRecipe', middleware, newRecipeController.index)
+  unauthenticatedRouter.get('/debug', middleware, route(DebugController, 'index'))
+  unauthenticatedRouter.get('/', middleware, route(ApplicationController, 'index'))
+  unauthenticatedRouter.get('/recipes', middleware, route(RecipesController, 'index'))
+  unauthenticatedRouter.get('/recipes/:id', middleware, route(RecipesController, 'show'))
+  unauthenticatedRouter.get('/authorsrecipes/:id', middleware, route(AuthorsRecipesController, 'index'))
+  unauthenticatedRouter.get('/newRecipe', middleware, route(NewRecipeController, 'index'))
 
   return unauthenticatedRouter
 }
-

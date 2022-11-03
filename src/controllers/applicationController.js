@@ -5,8 +5,10 @@ class ApplicationController extends BaseController {
     super(app)
   }
 
-  index = async (req, res) => {
-    res.render('pages/index.html.ejs', { context: await this.viewContext(req) })
+  async index(req, res) {
+    const context = await super.viewContext.call(this, req)
+
+    res.render('pages/index.html.ejs', { context })
   }
 }
 

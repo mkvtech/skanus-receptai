@@ -5,7 +5,7 @@ class UsersController extends BaseController {
     super(app)
   }
 
-  show = async (req, res) => {
+  async show(req, res) {
     const comments = await this.models.comments.findAll({
       where: {
         userId: req.params.id

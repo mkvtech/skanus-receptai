@@ -5,7 +5,7 @@ class RecipesController extends BaseController {
     super(app)
   }
 
-  index = async (req, res) => {
+  async index(req, res) {
     const recipes = await this.models.recipes.findAll({
       include: this.models.users,
     })
@@ -24,7 +24,7 @@ class RecipesController extends BaseController {
     })
   }
 
-  show = async (req, res) => {
+  async show(req, res) {
     const recipe = await this.models.recipes.findOne({
       where: {
         id: req.params.id,
@@ -54,7 +54,7 @@ class RecipesController extends BaseController {
     }
   }
 
-  rate = async (req, res) => {
+  async rate(req, res) {
     const recipe = await this.models.recipes.findOne({ where: { id: req.params.id } })
     const recipeRating = await this.models.recipe_ratings.findOne({
       where: {
@@ -82,4 +82,3 @@ class RecipesController extends BaseController {
 }
 
 module.exports = RecipesController
-

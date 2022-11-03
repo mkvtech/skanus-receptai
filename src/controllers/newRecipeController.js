@@ -5,7 +5,7 @@ class NewRecipeController extends BaseController {
     super(app)
   }
 
-  index = async (req, res) => {
+  async index(req, res) {
     res.render('pages/recipes/newIndex.html.ejs', { context: await this.viewContext(req) })
   }
 }

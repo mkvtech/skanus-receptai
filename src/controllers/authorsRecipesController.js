@@ -5,7 +5,7 @@ class AuthorsRecipesController extends BaseController {
     super(app)
   }
 
-  index = async (req, res) => {
+  async index(req, res) {
     const recipes = await this.models.recipes.findAll({
       where: {
         userId: req.params.id,

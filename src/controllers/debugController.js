@@ -5,7 +5,7 @@ class DebugController extends BaseController {
     super(app)
   }
 
-  index = async (req, res) => {
+  async index(req, res) {
     res.send({
       ok: 'ok',
       request: {
