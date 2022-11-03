@@ -9,7 +9,7 @@ module.exports = function (app) {
     'recipe_ratings',
     {
       rating: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           min: { args: 1, msg: 'Rating must be 1 or greater' },

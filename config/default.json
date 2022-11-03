@@ -25,7 +25,15 @@
       "passwordField": "password"
     }
   },
-  "sqlite": "sqlite://skanus_receptai.sqlite",
+  "db": {
+    "primary": {
+      "host": "localhost",
+      "port": 3306,
+      "user": "root",
+      "password": "password",
+      "database": "skanus_receptai"
+    }
+  },
   "other": {
     "afterLoginRedirect": "/recipes",
     "afterSignupRedirect": "/recipes"

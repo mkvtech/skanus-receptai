@@ -1,13 +1,11 @@
 const Sequelize = require('sequelize')
 
 module.exports = function (app) {
-  const connectionString = app.get('sqlite')
-  const sequelize = new Sequelize(connectionString, {
-    dialect: 'sqlite',
+  const mysqlConfig = app.get('db').primary
+  const sequelize = new Sequelize(mysqlConfig.database, mysqlConfig.user, mysqlConfig.password, {
+    dialect: 'mysql',
+    host: mysqlConfig.host,
     logging: false,
-    define: {
-      freezeTableName: true,
-    },
   })
 
   app.set('sequelizeClient', sequelize)

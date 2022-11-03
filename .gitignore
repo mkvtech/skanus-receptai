@@ -111,5 +111,4 @@ lib/
 data/
 
 # SQLite database files
-/skanus_receptai.sqlite
 /sessions.sqlite

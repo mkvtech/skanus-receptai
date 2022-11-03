@@ -26,14 +26,15 @@
   "scripts": {
     "dev": "nodemon src/",
     "start": "node src/",
-    "db:sync": "node ./migrations/sync.js",
+    "recreateDb": "node ./scripts/recreateDb.js",
+    "recreateTables": "node ./scripts/recreateTables.js",
     "autofix": "npm run lint:fix && npm run prettier:fix",
     "prettier": "npx prettier --check src/. test/. public/.",
     "prettier:fix": "npx prettier --write src/. test/. public/.",
     "lint": "eslint src/. test/. --config .eslintrc.json",
     "lint:fix": "eslint src/. test/. --config .eslintrc.json --fix",
     "test": "npm run lint && npm run prettier && npm run test:unit",
-    "test:unit": "npx jest --config ./test/unit/jest.config.js -- ./test/unit/*"
+    "test:unit": "npx jest --runInBand --config ./test/unit/jest.config.js -- ./test/unit/*"
   },
   "standard": {
     "env": [
@@ -60,7 +61,9 @@
     "express-session": "^1.17.3",
     "feathers-sequelize": "^6.3.6",
     "helmet": "^6.0.0",
+    "jsdom": "^20.0.2",
     "lodash": "^4.17.21",
+    "mysql2": "^2.3.3",
     "sequelize": "^6.25.3",
     "serve-favicon": "^2.5.0",
     "sqlite3": "^5.1.2",

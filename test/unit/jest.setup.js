@@ -4,7 +4,6 @@ global.beforeEach(async () => {
   await app.get('sequelizeClient').sync({ force: true })
 })
 
-// prettier-ignore
-global.afterEach(() => {
-
+global.afterAll(() => {
+  app.get('sequelizeClient').close()
 })

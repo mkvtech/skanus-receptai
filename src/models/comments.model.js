@@ -13,7 +13,7 @@ module.exports = function (app) {
         allowNull: false,
       },
       rating: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
