@@ -8,12 +8,10 @@ class UsersController extends BaseController {
   async show(req, res) {
     const comments = await this.models.comments.findAll({
       where: {
-        userId: req.params.id
+        userId: req.params.id,
       },
 
-      include: [
-        this.models.users,
-      ]
+      include: [this.models.users],
     })
     res.render('pages/users/show.html.ejs', {
       context: await this.viewContext(req),

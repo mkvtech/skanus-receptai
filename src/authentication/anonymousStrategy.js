@@ -4,7 +4,7 @@ class AnonymousStrategy extends AuthenticationBaseStrategy {
   // eslint-disable-next-line no-unused-vars
   async authenticate(authentication, params) {
     return {
-      anonymous: true
+      anonymous: true,
     }
   }
 }

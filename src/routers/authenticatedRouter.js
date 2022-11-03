@@ -11,10 +11,7 @@ const UsersController = require('../controllers/usersController')
 module.exports = (app) => {
   const authenticatedRouter = express.Router()
 
-  const middleware = [
-    setSessionAuthentication(),
-    authenticate('jwt'),
-  ]
+  const middleware = [setSessionAuthentication(), authenticate('jwt')]
 
   const route = (controllerClass, action) => {
     return async (req, res) => {

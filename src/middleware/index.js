@@ -12,7 +12,7 @@ module.exports = function (app) {
       resave: true,
       cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }, // 1 week
       store: new SQLiteStore({ table: 'sessions', db: 'sessions.sqlite', dir: '.' }),
-      name: 'skanus-receptai-session-id'
+      name: 'skanus-receptai-session-id',
     })
   )
 }

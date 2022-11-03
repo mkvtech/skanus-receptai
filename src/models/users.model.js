@@ -44,11 +44,11 @@ module.exports = function (app) {
     users.hasMany(models.recipe_ratings, { foreignKey: { allowNull: false } })
   }
 
-  users.prototype.getFullName = function() {
+  users.prototype.getFullName = function () {
     return `${this.firstName} ${this.lastName}`
   }
 
-  users.prototype.generateAuthorsPageLink = function() {
+  users.prototype.generateAuthorsPageLink = function () {
     return `${app.get('utils').fullBaseUrl}/authorsrecipes/${this.id}`
   }
 
