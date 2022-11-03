@@ -38,7 +38,7 @@ describe('authorsRecipesController', () => {
           password: 'password',
         })
 
-        const recipe = await app.get('models').recipes.create({
+        await app.get('models').recipes.create({
           title: 'Sample Recipe',
           description: 'Recipe Description',
           ingredients: 'organic raw materials',
