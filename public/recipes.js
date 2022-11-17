@@ -104,7 +104,7 @@ const onRecipeSelect = (recipeId) => {
   rightSideContainer.empty()
   rightSideContainer.html(recipeView)
 
-  const recipe = recipes.find((recipe) => recipe.id === recipeId)
+  let recipe = recipes.find((recipe) => recipe.id === recipeId)
 
   fillRecipeView(recipe)
 }
@@ -219,7 +219,7 @@ const createRecipeForm = () => {
     <label for="recipe-form-title"> Recipe name: </label>
     <br />
     <input type="text" name="title" id="recipe-form-title" required />
-    
+
     <br />
 
     <label for="recipe-form-description">Description: </label>
@@ -240,7 +240,7 @@ const createRecipeForm = () => {
     <div class="break"></div>
     <div class="break"></div>
     <div class="break"></div>
-    
+
     <div id="steps">
     <label for="recipe-form-steps">Steps to make: </label>
     <br />

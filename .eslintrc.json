@@ -24,6 +24,8 @@
         "before": true,
         "after": true
       }
-    ]
+    ],
+    "prefer-const": ["error", {}],
+    "complexity": ["error", 2]
   }
 }
