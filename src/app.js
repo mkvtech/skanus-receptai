@@ -3,7 +3,6 @@ const favicon = require('serve-favicon')
 const compress = require('compression')
 const helmet = require('helmet')
 const cors = require('cors')
-const logger = require('./logger')
 
 const feathers = require('@feathersjs/feathers')
 const configuration = require('@feathersjs/configuration')
@@ -27,6 +26,12 @@ const appUtils = require('./appUtils')
 require('express-async-errors')
 
 const app = express(feathers())
+
+const loggerConfiguration = require('./logger')
+app.configure(loggerConfiguration)
+
+const loggingMiddleware = require('./middleware/logger')
+app.configure(loggingMiddleware)
 
 // Load app configuration
 app.configure(configuration())
@@ -68,7 +73,7 @@ app.configure(frontendRoutes)
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound())
-app.use(express.errorHandler({ logger }))
+app.use(express.errorHandler({ logger: app.get('logger') }))
 
 app.hooks(appHooks)
 

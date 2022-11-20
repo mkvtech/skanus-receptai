@@ -1,45 +1,98 @@
 const { createLogger, format, transports } = require('winston')
+const colors = require('colors/safe')
 
-const removeFields = format((info, opts) => {
-  if (opts) {
-    opts.forEach((field) => {
-      delete info[field]
-    })
-  }
+module.exports = (app) => {
+  const logger =
+    process.env.NODE_ENV === 'test'
+      ? createLogger({
+          level: 'info',
+          format: format.combine(
+            //
+            format.errors({ stack: true }),
+            format.timestamp()
+          ),
+          transports: [
+            new transports.File({
+              filename: 'log/test.log',
+              level: 'info',
+              format: format.combine(
+                //
+                format.splat(),
+                format.printf((log) => `${log.timestamp} ${log.level}: ${log.message}${log.stack ?? ''}`)
+              ),
+            }),
+          ],
+        })
+      : createLogger({
+          level: 'info',
+          format: format.combine(
+            //
+            format.errors({ stack: true }),
+            format.timestamp()
+          ),
+          transports: [
+            new transports.File({
+              filename: 'log/development.log',
+              level: 'info',
+              format: format.combine(
+                //
+                format.splat(),
+                format.printf((log) => `${log.timestamp} ${log.level}: ${log.message}${log.stack ?? ''}`)
+              ),
+            }),
 
-  return info
-})
+            new transports.Console({
+              format: format.combine(
+                format.colorize(),
 
-const skipLogWithCodes = format((info, opts) => {
-  if (info.code && Array.isArray(opts)) {
-    if (opts.some((codeRegexp) => codeRegexp.test('' + info.code))) {
-      return null
-    }
-  }
+                format.printf((log) => {
+                  if (log.type === 'http') {
+                    const { req } = log
 
-  return info
-})
+                    return `\n\n${colors.gray(log.timestamp)} Started ${colors.blue(req.method)} ${colors.blue(
+                      req.originalUrl
+                    )}`
+                  }
 
-// Configure the Winston logger. For the complete documentation see https://github.com/winstonjs/winston
-const logger = createLogger({
-  level: 'debug',
+                  if (log.type === 'httpDone') {
+                    const { req, res } = log
+                    const { statusCode } = res
 
-  format: format.combine(
-    ...[
-      // When in test mode, skip 401 and 404 logs
-      ...(process.env.NODE_ENV === 'test' ? [skipLogWithCodes([/4../])] : []),
+                    const color = statusCode >= 500 ? 'red' : statusCode >= 400 ? 'blue' : 'green'
 
-      // Feathersjs 'hook' field in log has too much data to log
-      removeFields(['hook']),
+                    return `${colors.gray(log.timestamp)} Done ${req.method} ${req.originalUrl} with ${colors[color](
+                      res.statusCode
+                    )} ${colors.gray(`(${log.executionTime} ms)`)}`
+                  }
 
-      format.errors({ stack: true }),
-      // format.colorize(), // TODO: Colorize output
-      format.timestamp(),
-      format.prettyPrint(),
-    ]
-  ),
+                  if (log.type === 'sql') {
+                    const { message } = log
+                    const color = message.startsWith('SELECT')
+                      ? 'blue'
+                      : message.startsWith('INSERT') || message.startsWith('UPDATE')
+                      ? 'green'
+                      : message.startsWith('DELETE')
+                      ? 'red'
+                      : 'white'
 
-  transports: [new transports.Console()],
-})
+                    return `${colors.gray(log.timestamp)} ${colors[color](log.message)}`
+                  }
 
-module.exports = logger
+                  const stack = log.stack
+                    ? '\n' +
+                      log.stack
+                        .split('\n')
+                        .map((line) => (line.includes('node') ? colors.dim.red(line) : colors.red(line)))
+                        .join('\n')
+                    : ''
+
+                  // Default, similar to format.simple()
+                  return `${colors.gray(log.timestamp)} ${log.level}: ${log.message}${stack}`
+                })
+              ),
+            }),
+          ],
+        })
+
+  app.set('logger', logger)
+}

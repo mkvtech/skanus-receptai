@@ -53,6 +53,7 @@
     "@feathersjs/socketio": "^4.5.15",
     "@feathersjs/transport-commons": "^4.5.15",
     "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
     "compression": "^1.7.4",
     "connect-sqlite3": "^0.9.13",
     "cors": "^2.8.5",
