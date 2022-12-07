@@ -19,6 +19,32 @@
         <h1 class="page-title">Receptai</h1>
       </header>
 
+      <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto">
+        <form action="/recipes">
+          <div class="form-group mb-6">
+            <label for="type" class="form-label inline-block mb-2 text-gray-700">Tipas</label>
+            <select class="twe-select" name="type" id="type">
+              <% formData.typeOptions.forEach((option) => { %>
+                <option value="<%= option %>"<%= formData.type === option ? ' selected' : '' %>>
+                  <%= option %>
+                </option>
+              <% }) %>
+            </select>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="order" class="form-label inline-block mb-2 text-gray-700">Rusiavimas</label>
+            <select class="twe-select" name="order" id="order">
+              <option value="ratingDesc"<%= formData.order === 'ratingDesc' ? ' selected' : '' %>>Geriausi virsuje</option>
+              <option value="ratingAsc"<%= formData.order === 'ratingAsc' ? ' selected' : '' %>>Blogiausi virsuje</option>
+              <option value="createdAtDesc"<%= formData.order === 'createdAtDesc' ? ' selected' : '' %>>Naujausi virsuje</option>
+            </select>
+          </div>
+
+          <button type="submit" class="twe-button">Siusti</button>
+        </form>
+      </div>
+
       <% recipes.forEach((recipe) => { %> <%- include('../../partials/recipes/recipeSmall.html.ejs', { recipe }) %> <%
       }) %>
     </div>

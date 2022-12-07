@@ -8,13 +8,37 @@ class RecipesController extends BaseController {
   }
 
   async index() {
-    const recipes = await this.models.recipes.findAll({
+    const { order: orderInput, type: typeInput } = this.request.query
+
+    const formData = {
+      order: orderInput,
+      type: typeInput,
+    }
+    let recipes = await this.models.recipes.findAll({
       include: [{ model: this.models.users }, { model: this.models.recipeRatings }],
     })
 
     recipes.forEach((recipe) => recipe.calculateAverageRating())
 
-    this.renderPage('recipes/index', { recipes })
+    formData.typeOptions = [''].concat(Array.from(recipes.reduce((set, recipe) => set.add(recipe.type), new Set())))
+
+    // Sorting
+    if (orderInput === 'ratingAsc') {
+      recipes.sort((a, b) => a.averageRating - b.averageRating)
+    } else if (orderInput === 'ratingDesc') {
+      recipes.sort((a, b) => b.averageRating - a.averageRating)
+    } else if (orderInput === 'createdAtDesc') {
+      recipes.sort((a, b) => b.createdAt - a.createdAt)
+    } else {
+      formData.order = ''
+    }
+
+    // Filtering
+    if (typeInput) {
+      recipes = recipes.filter((recipe) => recipe.type === typeInput)
+    }
+
+    this.renderPage('recipes/index', { recipes, formData })
   }
 
   async show() {
