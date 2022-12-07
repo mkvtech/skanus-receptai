@@ -10,9 +10,11 @@
       <span> Visi receptai </span>
     </a>
 
-    <a class="nav-link" href="/authorRecipes">
+    <% if (currentUser) { %>
+    <a class="nav-link" href="/authorsrecipes/<%= currentUser.id %>">
       <span> Mano receptai </span>
     </a>
+    <% } %>
 
     <a class="nav-link" href="/recipes/new">
       <span> Naujas receptas </span>
