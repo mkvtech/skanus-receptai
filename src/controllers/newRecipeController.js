@@ -1,8 +1,8 @@
 const BaseController = require('./baseController')
 
 class NewRecipeController extends BaseController {
-  constructor(app) {
-    super(app)
+  constructor(options) {
+    super(options)
   }
 
   async index(req, res) {

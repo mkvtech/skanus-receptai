@@ -1,12 +1,12 @@
 'use strict'
 
-const { recipe_ratings } = require('../models')
+const { recipeRatings } = require('../models')
 
 module.exports = {
   // eslint-disable-next-line no-unused-vars
-  async up (queryInterface, Sequelize) {
-    await recipe_ratings.bulkCreate([
-      // userId: 1 recipe_ratings
+  async up(queryInterface, Sequelize) {
+    await recipeRatings.bulkCreate([
+      // userId: 1 recipeRatings
       {
         id: 1,
         userId: 1,
@@ -26,7 +26,7 @@ module.exports = {
         rating: 1,
       },
 
-      // userId: 2 recipe_ratings
+      // userId: 2 recipeRatings
       {
         id: 4,
         userId: 2,
@@ -46,7 +46,7 @@ module.exports = {
         rating: 2,
       },
 
-      // userId: 3 recipe_ratings
+      // userId: 3 recipeRatings
       {
         id: 7,
         userId: 3,
@@ -54,7 +54,7 @@ module.exports = {
         rating: 5,
       },
 
-      // userId: 4 recipe_ratings
+      // userId: 4 recipeRatings
       {
         id: 8,
         userId: 4,
@@ -80,7 +80,7 @@ module.exports = {
         rating: 5,
       },
 
-      // userId: 5 recipe_ratings
+      // userId: 5 recipeRatings
       {
         id: 12,
         userId: 5,
@@ -109,7 +109,7 @@ module.exports = {
   },
 
   // eslint-disable-next-line no-unused-vars
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('recipe_ratings', null, {})
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('recipeRatings', null, {})
+  },
 }

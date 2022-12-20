@@ -1,13 +1,13 @@
 const BaseController = require('./baseController')
 
 class CommentsController extends BaseController {
-  constructor(app) {
-    super(app)
+  constructor(options) {
+    super(options)
   }
 
   async create(req, res) {
     await this.models.comments.create({
-      userId: req.user.id,
+      userId: req.currentUser.id,
       recipeId: req.body.recipeId,
       text: req.body.text,
       rating: 0,

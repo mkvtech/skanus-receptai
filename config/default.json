@@ -26,16 +26,16 @@
     }
   },
   "db": {
-    "primary": {
+    "dbType": "sqlite",
+    "mysql": {
       "host": "localhost",
       "port": 3306,
       "user": "root",
       "password": "password",
       "database": "skanus_receptai"
-    }
+    },
+    "sqlite": "sqlite://skanus_receptai.sqlite"
   },
-  "other": {
-    "afterLoginRedirect": "/recipes",
-    "afterSignupRedirect": "/recipes"
-  }
+  "jwtSecret": "supersecret",
+  "jwtCookieKey": "accessToken"
 }

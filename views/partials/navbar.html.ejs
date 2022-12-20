@@ -6,31 +6,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 
   <nav class="nav-links">
-    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/recipes` %>">
+    <a class="nav-link" href="/recipes">
       <span> Visi receptai </span>
     </a>
 
-    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/authorRecipes` %>">
+    <a class="nav-link" href="/authorRecipes">
       <span> Mano receptai </span>
     </a>
 
-    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/newRecipe` %>">
+    <a class="nav-link" href="/recipes/new">
       <span> Naujas receptas </span>
     </a>
 
-    <% if (context.currentUser) { %>
-    <a
-      class="nav-right nav-link"
-      href="<%= `${context.controller.utils.fullBaseUrl}/users/${context.currentUser.id}` %>"
-    >
-      <span> <%= context.currentUser.getFullName() %> </span>
+    <% if (currentUser) { %>
+    <a class="nav-right nav-link" href="<%= `/users/${currentUser.id}` %>">
+      <span> <%= currentUser.getFullName() %> </span>
     </a>
 
-    <a class="nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/logout` %>">
+    <a class="nav-link" href="/logout">
       <span> Atsijungti </span>
     </a>
     <% } else { %>
-    <a class="nav-right nav-link" href="<%= `${context.controller.utils.fullBaseUrl}/login` %>">
+    <a class="nav-right nav-link" href="/login">
       <span> Prisijungti </span>
     </a>
     <% } %>

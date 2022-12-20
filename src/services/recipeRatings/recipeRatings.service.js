@@ -4,7 +4,7 @@ const hooks = require('./recipeRatings.hooks')
 
 module.exports = function (app) {
   const options = {
-    Model: app.get('models').recipe_ratings,
+    Model: app.get('models').recipeRatings,
     paginate: app.get('paginate'),
   }
 

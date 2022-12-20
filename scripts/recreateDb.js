@@ -4,7 +4,13 @@ console.log(__filename)
 const mysql = require('mysql2/promise')
 
 const app = require('../src/app')
-const mysqlConfig = app.get('db').primary
+const dbConfig = app.get('db')
+
+if (dbConfig.dbType !== 'mysql') {
+  throw new Error('This script can only be used with MySQL db')
+}
+
+const mysqlConfig = dbConfig.mysql
 
 ;(async () => {
   const connectionParameters = {

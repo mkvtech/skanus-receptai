@@ -1,11 +1,13 @@
 const BaseController = require('./baseController')
 
 class DebugController extends BaseController {
-  constructor(app) {
-    super(app)
+  constructor(options) {
+    super(options)
   }
 
-  async index(req, res) {
+  async index() {
+    const { req, res } = this
+
     res.send({
       ok: 'ok',
       request: {
@@ -14,7 +16,7 @@ class DebugController extends BaseController {
         requestStriped: {
           authentication: req.authentication,
           anonymous: req.anonymous,
-          user: req.user,
+          currentUser: req.currentUser,
         },
       },
       app: {

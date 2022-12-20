@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Atnaujinti receptą</title>
+
+    <link rel="stylesheet" href="/dist/tailwind.css" />
+  </head>
+  <body>
+    <%- include('../../partials/navbar.html.ejs') %>
+
+    <div class="container max-w-lg mx-auto">
+      <div class="block p-6 rounded-lg shadow-lg bg-white">
+        <h1 class="text-center text-5xl font-bold mt-10 mb-6 text-gray-700">Atnaujinti receptą</h1>
+
+        <%- include('./form.html.ejs', { formAction: `/recipes/${recipe.id}/edit` }) %>
+      </div>
+    </div>
+  </body>
+</html>

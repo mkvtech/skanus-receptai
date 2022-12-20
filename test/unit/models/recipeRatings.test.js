@@ -1,6 +1,6 @@
 const app = require('../../../src/app')
 
-const { users, recipes, recipe_ratings } = app.get('models')
+const { users, recipes, recipeRatings } = app.get('models')
 
 describe('recipeRatings', () => {
   describe('.save()', () => {
@@ -34,7 +34,7 @@ describe('recipeRatings', () => {
       let recipeRating
 
       beforeEach(() => {
-        recipeRating = recipe_ratings.build({
+        recipeRating = recipeRatings.build({
           userId: user.id,
           recipeId: recipe.id,
           rating: 5,
@@ -91,7 +91,7 @@ describe('recipeRatings', () => {
 
       describe('when user has already rated the recipe', () => {
         beforeEach(async () => {
-          await recipe_ratings.create({
+          await recipeRatings.create({
             userId: user.id,
             recipeId: recipe.id,
             rating: 4,
@@ -108,7 +108,7 @@ describe('recipeRatings', () => {
 
     describe('with valid data', () => {
       it('saves recipeRating object', async () => {
-        await recipe_ratings.create({
+        await recipeRatings.create({
           userId: user.id,
           recipeId: recipe.id,
           rating: 5,

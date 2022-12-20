@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Pagrindinis</title>
+    <title>Pagrindinis</title>
 
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/common.css" />
 
-  <link rel="stylesheet" href="/css/pages/recipes/show.css">
+    <link rel="stylesheet" href="/css/pages/recipes/show.css" />
+  </head>
+  <body>
+    <%- include('../../partials/navbar.html.ejs') %>
 
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
-    integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-</head>
-<body>
-  <%- include('../../partials/navbar.html.ejs', { context }); %>
+    <div class="main-container">
+      <header class="page-header">
+        <h1 class="page-title"><%= currentUser.getFullName() %></h1>
+      </header>
 
-  <div class="main-container">
-    <header class="page-header">
-      <h1 class="page-title"><%= context.currentUser.getFullName() %></h1>
-    </header>
+      <% if (currentUser.id === user.id) { %>
+      <a href="/users/<%= user.id %>/edit">Redaguoti</a>
+      <% } %>
 
-    <div class="recipe-comments">
-      <!-- Comments -->
-      <% comments.forEach((comment) => { %>
+      <div class="recipe-comments">
+        <% comments.forEach((comment) => { %>
         <div class="recipes-comment">
-          <div class="comment-user">
-            <%= comment.user.firstName %>
-            <%= comment.user.lastName %>
-          </div>
-          <!-- <% console.log(comment.user) %> -->
-          <div class="comment-text">
-            <%= comment.text %>
-          </div>
-        </div>   
-    <% }) %>
+          <div class="comment-user"><%= comment.user.firstName %> <%= comment.user.lastName %></div>
+          <div class="comment-text"><%= comment.text %></div>
+        </div>
+        <% }) %>
+      </div>
     </div>
-
-    <!-- TODO: Comments -->
-  </div>
-</body>
+  </body>
 </html>

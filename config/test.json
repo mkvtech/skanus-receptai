@@ -1,7 +1,8 @@
 {
   "db": {
-    "primary": {
+    "mysql": {
       "database": "skanus_receptai_test"
-    }
+    },
+    "sqlite": "sqlite::memory:"
   }
 }

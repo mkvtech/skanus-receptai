@@ -25,6 +25,8 @@
   },
   "scripts": {
     "dev": "nodemon src/",
+    "tailwind": "npx tailwindcss --output ./dist/tailwind.css --input ./src/main.css",
+    "tailwind:dev": "npx tailwindcss --watch --output ./dist/tailwind.css --input ./src/main.css",
     "start": "node src/",
     "recreateDb": "node ./scripts/recreateDb.js",
     "recreateTables": "node ./scripts/recreateTables.js",
@@ -56,6 +58,7 @@
     "colors": "^1.4.0",
     "compression": "^1.7.4",
     "connect-sqlite3": "^0.9.13",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "ejs": "^3.1.8",
     "express-async-errors": "^3.1.1",
@@ -63,11 +66,13 @@
     "feathers-sequelize": "^6.3.6",
     "helmet": "^6.0.0",
     "jsdom": "^20.0.2",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.3",
     "serve-favicon": "^2.5.0",
     "sqlite3": "^5.1.2",
+    "tw-elements": "^1.0.0-alpha12",
     "winston": "^3.8.2"
   },
   "devDependencies": {
@@ -78,6 +83,7 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "sequelize-cli": "^6.5.2",
-    "supertest": "^6.3.1"
+    "supertest": "^6.3.1",
+    "tailwindcss": "^3.2.4"
   }
 }

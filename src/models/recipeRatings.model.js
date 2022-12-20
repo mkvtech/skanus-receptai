@@ -6,7 +6,7 @@ const DataTypes = Sequelize.DataTypes
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient')
   const recipeRatings = sequelizeClient.define(
-    'recipe_ratings',
+    'recipeRatings',
     {
       rating: {
         type: DataTypes.INTEGER,

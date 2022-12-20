@@ -11,18 +11,34 @@ module.exports = function (app) {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notNull: { msg: 'negali būti tuščias' },
+          notEmpty: { msg: 'negali būti tuščias' },
+        },
       },
       description: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notNull: { msg: 'negali būti tuščias' },
+          notEmpty: { msg: 'negali būti tuščias' },
+        },
       },
       ingredients: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notNull: { msg: 'negali būti tuščias' },
+          notEmpty: { msg: 'negali būti tuščias' },
+        },
       },
       type: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notNull: { msg: 'negali būti tuščias' },
+          notEmpty: { msg: 'negali būti tuščias' },
+        },
       },
     },
     {
@@ -37,7 +53,7 @@ module.exports = function (app) {
   recipes.associate = function (models) {
     recipes.belongsTo(models.users, { foreignKey: { allowNull: false } })
     recipes.hasMany(models.comments, { foreignKey: { allowNull: false } })
-    recipes.hasMany(models.recipe_ratings, { foreignKey: { allowNull: false } })
+    recipes.hasMany(models.recipeRatings, { foreignKey: { allowNull: false } })
     // Define associations here
     // See https://sequelize.org/master/manual/assocs.html
   }
@@ -46,8 +62,19 @@ module.exports = function (app) {
     return `${app.get('utils').fullBaseUrl}/recipes/${this.id}`
   }
 
+  recipes.prototype.calculateAverageRating = function () {
+    const { recipeRatings } = this
+
+    const length = recipeRatings.length
+    const averageRating = length ? recipeRatings.reduce((acc, current) => acc + current.rating, 0) / length : 0
+
+    this.averageRating = averageRating
+
+    return averageRating
+  }
+
   recipes.prototype.getTotalRating = async function () {
-    const myRecipeRatings = await this.getRecipe_ratings()
+    const myRecipeRatings = await this.getRecipeRatings()
 
     if (!myRecipeRatings.length) {
       return 0

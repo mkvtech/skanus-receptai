@@ -1,17 +1,29 @@
 class BaseController {
-  constructor(app) {
-    this.app = app
+  constructor(options) {
+    this.app = options.app
+    this.req = options.req
+    this.res = options.res
+
+    this.request = this.req
+    this.response = this.res
+    this.currentUser = this.request.currentUser
     this.models = this.app.get('models')
     this.utils = this.app.get('utils')
   }
 
-  async viewContext(request) {
+  viewContext() {
     return {
       app: this.app,
       controller: this,
-      ...(request.user && { currentUser: await this.models.users.findByPk(request.user.id) }),
-      request,
+      currentUser: this.request.currentUser,
     }
+  }
+
+  renderPage(page, localVariables = {}) {
+    this.response.render(`pages/${page}.html.ejs`, {
+      ...localVariables,
+      ...this.viewContext(),
+    })
   }
 }
 

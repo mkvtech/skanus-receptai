@@ -1,0 +1,74 @@
+<% if (validation.isInvalid) { %>
+<div class="mt-2 text-sm text-red-600">Receptas turi <%= validation.allErrorsLength %> klaidų</div>
+<% } %>
+
+<form action="<%= formAction %>" method="post">
+  <div class="form-group mb-6">
+    <label for="title" class="form-label inline-block mb-2 text-gray-700">Pavadinimas</label>
+    <input
+      type="text"
+      name="title"
+      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      id="title"
+      placeholder="Skanus receptas"
+      value="<%= recipe.title %>"
+    />
+    <% if (validation.isFieldInvalid('title')) { %>
+    <div class="mt-2 text-sm text-red-600"><%- validation.byField.title.join('<br />') %></div>
+    <% } %>
+  </div>
+
+  <div class="form-group mb-6">
+    <label for="type" class="form-label inline-block mb-2 text-gray-700">Tipas</label>
+    <input
+      type="text"
+      name="type"
+      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      id="type"
+      placeholder="Desertas"
+      value="<%= recipe.type %>"
+    />
+    <% if (validation.isFieldInvalid('type')) { %>
+    <div class="mt-2 text-sm text-red-600"><%- validation.byField.type.join('<br />') %></div>
+    <% } %>
+  </div>
+
+  <div class="form-group mb-6">
+    <label for="description" class="form-label inline-block mb-2 text-gray-700">Paruošimas</label>
+    <textarea
+      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      name="description"
+      id="description"
+      rows="3"
+      placeholder="Paruošimas"
+    >
+<%= recipe.description %></textarea
+    >
+    <% if (validation.isFieldInvalid('description')) { %>
+    <div class="mt-2 text-sm text-red-600"><%- validation.byField.description.join('<br />') %></div>
+    <% } %>
+  </div>
+
+  <div class="form-group mb-6">
+    <label for="ingredients" class="form-label inline-block mb-2 text-gray-700">Ingredients</label>
+    <textarea
+      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      name="ingredients"
+      id="ingredients"
+      rows="3"
+      placeholder="..."
+    >
+<%= recipe.ingredients %></textarea
+    >
+    <% if (validation.isFieldInvalid('ingredients')) { %>
+    <div class="mt-2 text-sm text-red-600"><%- validation.byField.ingredients.join('<br />') %></div>
+    <% } %>
+  </div>
+
+  <button
+    type="submit"
+    class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+  >
+    Siųsti
+  </button>
+</form>

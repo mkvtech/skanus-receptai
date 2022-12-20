@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Prisijungti</title>
+
+    <%- include('../../partials/tailwindMeta.html.ejs') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar.html.ejs') %>
+
+    <div class="container mx-auto">
+      <h1 class="text-center text-5xl font-bold mt-10 mb-6 text-gray-700">Prisijungimas</h1>
+
+      <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto">
+        <% if (validationMessage) { %>
+        <p class="mt-2 text-sm text-red-600"><%= validationMessage %></p>
+        <% } %>
+
+        <form action="/login" method="post">
+          <div class="form-group mb-6">
+            <label for="email" class="form-label inline-block mb-2 text-gray-700">Elektroninis paštas</label>
+            <input name="email" type="text" class="twe-input" id="email" placeholder="Enter email" />
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="password" class="form-label inline-block mb-2 text-gray-700">Slaptažodis</label>
+            <input name="password" type="password" class="twe-input" id="password" placeholder="Password" />
+          </div>
+
+          <button type="submit" class="twe-button w-full">Prisijungti</button>
+        </form>
+
+        <p class="mt-6">
+          <a class="twe-link" href="/login">Prisijungti</a> - <a href="/signup" class="twe-link">Sukūrti paskyrą</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

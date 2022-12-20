@@ -138,7 +138,7 @@ describe('recipesController', () => {
           it('creates new recipeRating object', async () => {
             await agent.post(`/recipes/${recipe.id}/rate`).send({ rating: sentRating }).expect(200)
 
-            const recipeRating = await app.get('models').recipe_ratings.findOne({
+            const recipeRating = await app.get('models').recipeRatings.findOne({
               where: {
                 userId: currentUser.id,
                 recipeId: recipe.id,
@@ -153,7 +153,7 @@ describe('recipesController', () => {
           let recipeRating
 
           beforeEach(async () => {
-            recipeRating = await app.get('models').recipe_ratings.create({
+            recipeRating = await app.get('models').recipeRatings.create({
               recipeId: recipe.id,
               userId: currentUser.id,
               rating: 5,

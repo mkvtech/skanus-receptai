@@ -2,11 +2,13 @@
 
 # SETUP
 
-```ps
+```powershell
+node --version # v18.12.0
+npm --version # 8.19.2
 npm install
-node run recreateDb
-node run recreateTables
+npm run recreateTables
 npx sequelize db:seed:all
+npm run tailwind
 npm start
 ```
 

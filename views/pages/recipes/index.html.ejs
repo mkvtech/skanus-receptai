@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <%- include('../../partials/head/meta.html.ejs') %>
 
-  <title>Pagrindinis</title>
+    <title>Pagrindinis</title>
 
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/common.css">
+    <%- include('../../partials/tailwindMeta.html.ejs') %>
 
-  <link rel="stylesheet" href="/css/partials/recipes/recipeSmall.css">
-</head>
-<body>
-  <%- include('../../partials/navbar.html.ejs', { context }); %>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/partials/recipes/recipeSmall.css" />
+  </head>
+  <body>
+    <%- include('../../partials/navbar.html.ejs') %>
 
-  <div class="main-container">
-    <header class="page-header">
-      <h1 class="page-title">Receptai</h1>
-    </header>
+    <div class="main-container">
+      <header class="page-header">
+        <h1 class="page-title">Receptai</h1>
+      </header>
 
-    <div>
-      <% types.forEach((type) => { %>
-        <%- include('../../partials/recipes/recipeType.html.ejs', { type }) %>
-      <% }) %>
-      </div>
-
-    <% recipes.forEach((recipe) => { %>
-      <%- include('../../partials/recipes/recipeSmall.html.ejs', { recipe }) %>
-    <% }) %>
-  </div>
-</body>
+      <% recipes.forEach((recipe) => { %> <%- include('../../partials/recipes/recipeSmall.html.ejs', { recipe }) %> <%
+      }) %>
+    </div>
+  </body>
 </html>

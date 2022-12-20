@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pagrindinis</title>
+
+    <%- include('../../partials/tailwindMeta.html.ejs') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar.html.ejs') %>
+
+    <div class="container max-w-lg mx-auto">
+      <div class="block p-6 rounded-lg shadow-lg bg-white">
+        <h1 class="text-center text-5xl font-bold mt-10 mb-6 text-gray-700">
+          Atnaujinti paskyrą <%= currentUser.getFullName() %>
+        </h1>
+
+        <% if (validation.isInvalid) { %>
+        <div class="mt-2 text-sm text-red-600">Yra <%= validation.allErrorsLength %> klaidų</div>
+        <% } %>
+
+        <form action="/users/<%= user.id %>/update" method="post">
+          <div class="form-group mb-6">
+            <label for="firstName" class="form-label inline-block mb-2 text-gray-700">Vardas</label>
+            <input type="text" name="firstName" class="twe-input" id="firstName" value="<%= user.firstName %>" />
+            <% if (validation.isFieldInvalid('firstName')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.firstName.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="lastName" class="form-label inline-block mb-2 text-gray-700">Pavardė</label>
+            <input type="text" name="lastName" class="twe-input" id="lastName" value="<%= user.lastName %>" />
+            <% if (validation.isFieldInvalid('lastName')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.lastName.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="email" class="form-label inline-block mb-2 text-gray-700">Elektroninis paštas</label>
+            <input type="text" name="email" class="twe-input" id="email" value="<%= user.email %>" />
+            <% if (validation.isFieldInvalid('email')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.email.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <a href="/users/<%= user.id %>" class="twe-link">Atgal</a>
+
+            <button type="submit" class="twe-button">Siųsti</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

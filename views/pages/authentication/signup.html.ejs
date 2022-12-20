@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sukūrti paskyrą</title>
+
+    <%- include('../../partials/tailwindMeta.html.ejs') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar.html.ejs') %>
+
+    <div class="container mx-auto">
+      <h1 class="text-center text-5xl font-bold mt-10 mb-6 text-gray-700">Sukūrti paskyrą</h1>
+
+      <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto">
+        <form action="/signup" method="post">
+          <div class="form-group mb-6">
+            <label for="email" class="form-label inline-block mb-2 text-gray-700">Elektroninis paštas</label>
+            <input
+              name="email"
+              type="email"
+              class="twe-input"
+              id="email"
+              placeholder="email@example.com"
+              value="<%= formData.email %>"
+            />
+            <% if (validation.isFieldInvalid('email')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.email.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="firstName" class="form-label inline-block mb-2 text-gray-700">Vardas</label>
+            <input
+              name="firstName"
+              type="text"
+              class="twe-input"
+              id="firstName"
+              placeholder="Vardas"
+              value="<%= formData.firstName %>"
+            />
+            <% if (validation.isFieldInvalid('firstName')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.firstName.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="lastName" class="form-label inline-block mb-2 text-gray-700">Pavardė</label>
+            <input
+              name="lastName"
+              type="text"
+              class="twe-input"
+              id="lastName"
+              placeholder="Pavardė"
+              value="<%= formData.lastName %>"
+            />
+            <% if (validation.isFieldInvalid('lastName')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.lastName.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="password" class="form-label inline-block mb-2 text-gray-700">Slaptažodis</label>
+            <input
+              name="password"
+              type="password"
+              class="twe-input"
+              id="password"
+              placeholder="Password"
+              value="<%= formData.password %>"
+            />
+            <% if (validation.isFieldInvalid('password')) { %>
+            <div class="mt-2 text-sm text-red-600"><%- validation.byField.password.join('<br />') %></div>
+            <% } %>
+          </div>
+
+          <button type="submit" class="twe-button w-full">Sukūrti paskyrą</button>
+        </form>
+
+        <p class="mt-6">
+          <a class="twe-link" href="/login">Prisijungti</a> - <a href="/signup" class="twe-link">Sukūrti paskyrą</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

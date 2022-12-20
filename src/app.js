@@ -3,6 +3,7 @@ const favicon = require('serve-favicon')
 const compress = require('compression')
 const helmet = require('helmet')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 const feathers = require('@feathersjs/feathers')
 const configuration = require('@feathersjs/configuration')
@@ -13,15 +14,13 @@ const middleware = require('./middleware')
 const services = require('./services')
 const appHooks = require('./app.hooks')
 
-const authentication = require('./authentication')
+const authentication = require('./middleware/authentication')
 
 const sequelize = require('./sequelize')
 const models = require('./models')
 
-const frontendRoutes = require('./frontend_routes')
-const sessionAuthentication = require('./session_authentication')
-
 const appUtils = require('./appUtils')
+const createRouter = require('./router')
 
 require('express-async-errors')
 
@@ -46,8 +45,16 @@ app.use(compress())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')))
+app.use(cookieParser())
+
 // Host the public folder
-app.use('/', express.static(app.get('public')))
+app.use('/', express.static(__dirname + '/../public'))
+app.use('/dist', express.static(__dirname + '/../dist'))
+
+// TODO: Fix/remove with js bundler
+app.get('/scripts/tw-elements.min.js', (req, res) =>
+  res.sendFile(path.resolve(__dirname + '/../node_modules/tw-elements/dist/js/index.min.js'))
+)
 
 // Set up Plugins and providers
 app.configure(express.rest())
@@ -66,10 +73,7 @@ app.configure(authentication)
 // Set up our services (see `services/index.js`)
 app.configure(services)
 
-// Register front-end authentication routes
-app.configure(sessionAuthentication)
-// Register view routes
-app.configure(frontendRoutes)
+app.use('/', createRouter(app))
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound())
