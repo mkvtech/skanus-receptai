@@ -159,6 +159,12 @@ class RecipesController extends BaseController {
       this.renderPage('recipe/edit', { recipe, validation: ValidationResult.fromSequelize(error) })
     }
   }
+
+  async delete() {
+    this.models.recipes.destroy({ where: { id: this.request.params.id } })
+
+    this.response.redirect('/recipes')
+  }
 }
 
 module.exports = RecipesController

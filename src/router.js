@@ -44,6 +44,7 @@ module.exports = (app) => {
   r.get('/recipes/:id/edit', requiredAuth, route(RecipesController, 'edit'))
   r.post('/recipes/:id/edit', requiredAuth, route(RecipesController, 'update'))
   r.post('/recipes/:id/rate', requiredAuth, route(RecipesController, 'rate'))
+  r.post('/recipes/:id/delete', requiredAuth, route(RecipesController, 'delete'))
 
   r.post('/comments', requiredAuth, route(CommentsController, 'create'))
 

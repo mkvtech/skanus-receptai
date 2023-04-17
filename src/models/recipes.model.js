@@ -85,5 +85,9 @@ module.exports = function (app) {
     return sum / myRecipeRatings.length
   }
 
+  recipes.prototype.canDelete = function (user) {
+    return user.id === this.userId || user.email === 'admin@skanus_receptai.lt'
+  }
+
   return recipes
 }

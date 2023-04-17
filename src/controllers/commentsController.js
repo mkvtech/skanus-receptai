@@ -5,9 +5,10 @@ class CommentsController extends BaseController {
     super(options)
   }
 
-  async create(req, res) {
+  async create() {
+    const { req, res } = this
     await this.models.comments.create({
-      userId: req.currentUser.id,
+      userId: this.currentUser.id,
       recipeId: req.body.recipeId,
       text: req.body.text,
       rating: 0,
