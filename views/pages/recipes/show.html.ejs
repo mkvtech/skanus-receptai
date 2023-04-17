@@ -31,16 +31,27 @@
         <p class="recipe-author"><%= recipe.user.getFullName() %></p>
       </header>
 
-      <% if (recipe.canDelete(currentUser)) { %>
+      <% if (recipe.canManage(currentUser)) { %>
       <div class="flex flex-row-reverse mx-10">
-        <form class="inline" method="post" action="/recipes/<%= recipe.id %>/delete">
-          <button
-            class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
-            type="submit"
-          >
-            DELETE
-          </button>
-        </form>
+        <div>
+          <form class="inline" action="/recipes/<%= recipe.id %>/edit">
+            <button
+              class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+              type="submit"
+            >
+              Redaguoti
+            </button>
+          </form>
+
+          <form class="inline" method="post" action="/recipes/<%= recipe.id %>/delete">
+            <button
+              class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
+              type="submit"
+            >
+              Panaikinti
+            </button>
+          </form>
+        </div>
       </div>
       <% } %>
 

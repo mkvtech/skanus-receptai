@@ -15,7 +15,7 @@
     <div class="recipe-small-date">
       <span> <%= recipe.createdAt.toLocaleString() %> </span>
 
-      <% if (recipe.canDelete(currentUser)) { %>
+      <% if (recipe.canManage(currentUser)) { %>
       <span>
         <form class="inline" method="post" action="/recipes/<%= recipe.id %>/delete">
           <button

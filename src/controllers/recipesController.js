@@ -129,8 +129,8 @@ class RecipesController extends BaseController {
   async edit() {
     const recipe = await this.models.recipes.findByPk(this.request.params.id)
 
-    if (recipe.userId != this.request.currentUser.id) {
-      return this.response.status(403)
+    if (!recipe.canManage(this.request.currentUser)) {
+      return this.response.status(403).json({ error: 'forbidden' })
     }
 
     this.renderPage('recipes/edit', { recipe, validation: ValidationResult.empty() })
