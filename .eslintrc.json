@@ -24,6 +24,7 @@
         "before": true,
         "after": true
       }
-    ]
+    ],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }]
   }
 }
