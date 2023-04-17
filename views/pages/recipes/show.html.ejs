@@ -44,7 +44,7 @@
       </div>
       <% } %>
 
-      <p class="recipe-description" style="white-space: pre-line"><%= recipe.description %></p>
+      <div class="m-4" style="white-space: pre-line"><%- recipe.description %></div>
 
       <div class="recipe-bottom">
         <div class="recipe-rating">
@@ -64,7 +64,12 @@
       <div class="comment-form">
         <form action="/comments" method="post">
           <p>Komentuoti</p>
-          <input type="text" name="text" required="" />
+          <input
+            type="text"
+            name="text"
+            required=""
+            class="border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          />
           <input type="text" name="recipeId" required="" value="<%= recipe.id %>" hidden />
           <div class="add-button">
             <button type="submit">Pridėti</button>

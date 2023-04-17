@@ -12,6 +12,19 @@ npm run tailwind
 npm start
 ```
 
+# DEVELOPMENT
+
+```powershell
+# Run Tailwind CSS app in other terminal and leave it running
+npm run tailwind:dev
+
+# Reset DB
+npm run recreateTables && npx sequelize db:seed:all
+
+# Start auto-restarting server
+npm run dev
+```
+
 # Commands
 
 ## Initialize
@@ -24,8 +37,8 @@ npm --version # must be > 8.0.0
 Initialize databases:
 
 ```
-node run recreateDb
-node run recreateTables
+npm run recreateDb
+npm run recreateTables
 ```
 
 Write sample data to the database:
