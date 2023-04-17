@@ -86,7 +86,7 @@ module.exports = function (app) {
   }
 
   recipes.prototype.canDelete = function (user) {
-    return user.id === this.userId || user.email === 'admin@skanus_receptai.lt'
+    return user && (user.id === this.userId || user.email === 'admin@skanus_receptai.lt')
   }
 
   return recipes

@@ -10,8 +10,10 @@ class AuthorsRecipesController extends BaseController {
 
     const recipes = await this.models.recipes.findAll({
       where: { userId },
-      include: this.models.users,
+      include: [{ model: this.models.users }, { model: this.models.recipeRatings }],
     })
+
+    recipes.forEach((recipe) => recipe.calculateAverageRating())
 
     const author = await this.models.users.findOne({ where: { id: userId } })
 
