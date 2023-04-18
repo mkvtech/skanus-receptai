@@ -140,8 +140,8 @@ class RecipesController extends BaseController {
     const { request, response } = this
     const recipe = await this.models.recipes.findByPk(request.params.id)
 
-    if (recipe.userId != request.currentUser.id) {
-      return response.status(403)
+    if (!recipe.canManage(request.currentUser)) {
+      return response.status(403).json({ error: 'forbidden' })
     }
 
     const params = pick(request.body, 'title', 'description', 'ingredients', 'type')

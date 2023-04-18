@@ -17,7 +17,7 @@ module.exports = function (app) {
         },
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           notNull: { msg: 'negali būti tuščias' },
@@ -25,7 +25,7 @@ module.exports = function (app) {
         },
       },
       ingredients: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           notNull: { msg: 'negali būti tuščias' },

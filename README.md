@@ -21,6 +21,9 @@ npm run tailwind:dev
 # Reset DB
 npm run recreateTables && npx sequelize db:seed:all
 
+# When MySQL is used
+npm run recreateDb && npm run recreateTables && npx sequelize db:seed:all
+
 # Start auto-restarting server
 npm run dev
 ```

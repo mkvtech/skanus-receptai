@@ -3,15 +3,18 @@ const dbConfig = app.get('db')
 
 const env = process.env.NODE_ENV || 'development'
 
+console.log(dbConfig)
+console.log(env)
+
 module.exports = {
   [env]:
     dbConfig.dbType === 'mysql'
       ? {
           dialect: 'mysql',
-          username: dbConfig.user,
-          password: dbConfig.password,
-          database: dbConfig.database,
-          host: dbConfig.host,
+          username: dbConfig.mysql.user,
+          password: dbConfig.mysql.password,
+          database: dbConfig.mysql.database,
+          host: dbConfig.mysql.host,
           migrationStorageTableName: '_migrations',
         }
       : {

@@ -10,7 +10,11 @@
     "entity": "user",
     "service": "api/users",
     "secret": "suJekRWliwM53Dd+9uSDqjhJzZU=",
-    "authStrategies": ["jwt", "local", "anonymous"],
+    "authStrategies": [
+      "jwt",
+      "local",
+      "anonymous"
+    ],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -26,13 +30,13 @@
     }
   },
   "db": {
-    "dbType": "sqlite",
+    "dbType": "mysql",
     "mysql": {
       "host": "localhost",
       "port": 3306,
       "user": "root",
       "password": "password",
-      "database": "skanus_receptai"
+      "database": "skanus_receptai_dev"
     },
     "sqlite": "sqlite://skanus_receptai.sqlite"
   },
