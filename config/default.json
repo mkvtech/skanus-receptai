@@ -30,7 +30,7 @@
     }
   },
   "db": {
-    "dbType": "mysql",
+    "dbType": "sqlite",
     "mysql": {
       "host": "localhost",
       "port": 3306,
